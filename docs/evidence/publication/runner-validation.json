@@ -1,0 +1,21 @@
+{
+  "run_id": 42146463516,
+  "url": "https://github.com/LeonaKTH/LeaseGuard/actions/runs/42146463516",
+  "head_sha": "19bd319948a0abb85a9c6c2238319d5e774e2b7d",
+  "event": "workflow_dispatch",
+  "conclusion": "success",
+  "java": {
+    "tests": 92,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "browser_status": "PASSED",
+  "browser_checks": 26,
+  "browser_screenshots": 13,
+  "log_and_artifact_known_secret_scan_passed": true,
+  "npm_audit_zero_in_log": true,
+  "browser_tool": "playwright-core1.64.1",
+  "browser_version": "156.0.8078.4",
+  "source_stage": "remote Linux runner, not local G5 evidence"
+}

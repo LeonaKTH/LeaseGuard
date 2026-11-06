@@ -1,0 +1,683 @@
+{
+  "stage": "final",
+  "orders": [
+    {
+      "id": 1,
+      "held": 1,
+      "status": 3
+    },
+    {
+      "id": 2,
+      "held": 1,
+      "status": 3
+    },
+    {
+      "id": 3,
+      "held": 0,
+      "status": 5
+    },
+    {
+      "id": 4,
+      "held": 1,
+      "status": 0
+    },
+    {
+      "id": 5,
+      "held": 0,
+      "status": 4
+    }
+  ],
+  "devices": [
+    {
+      "id": 1,
+      "stock": 1,
+      "status": 1
+    },
+    {
+      "id": 2,
+      "stock": 1,
+      "status": 1
+    },
+    {
+      "id": 3,
+      "stock": 1,
+      "status": 2
+    },
+    {
+      "id": 4,
+      "stock": 1,
+      "status": 1
+    },
+    {
+      "id": 5,
+      "stock": 0,
+      "status": 0
+    }
+  ],
+  "returns": [
+    {
+      "at": "2026-11-06 01:59:20.000000",
+      "order": 5,
+      "status": 1,
+      "reviewer": 5
+    }
+  ],
+  "ticket": [
+    {
+      "id": 2,
+      "status": 2,
+      "version": 5,
+      "assignee": 3,
+      "acceptedAt": "2026-11-06 01:59:32.000000",
+      "acceptedBy": 5
+    }
+  ],
+  "logs": [
+    {
+      "after": 1,
+      "delta": -1,
+      "order": 1,
+      "before": 2,
+      "device": 2,
+      "effect": "ALLOCATE",
+      "command": 1
+    },
+    {
+      "after": 1,
+      "delta": -1,
+      "order": 2,
+      "before": 2,
+      "device": 3,
+      "effect": "ALLOCATE",
+      "command": 6
+    },
+    {
+      "after": 0,
+      "delta": -1,
+      "order": 3,
+      "before": 1,
+      "device": 4,
+      "effect": "ALLOCATE",
+      "command": 13
+    },
+    {
+      "after": 0,
+      "delta": -1,
+      "order": 4,
+      "before": 1,
+      "device": 5,
+      "effect": "ALLOCATE",
+      "command": 14
+    },
+    {
+      "after": 1,
+      "delta": 1,
+      "order": 3,
+      "before": 0,
+      "device": 4,
+      "effect": "RELEASE",
+      "command": 17
+    },
+    {
+      "after": 0,
+      "delta": -1,
+      "order": 5,
+      "before": 1,
+      "device": 1,
+      "effect": "ALLOCATE",
+      "command": 18
+    },
+    {
+      "after": 1,
+      "delta": 1,
+      "order": 5,
+      "before": 0,
+      "device": 1,
+      "effect": "RELEASE",
+      "command": 24
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "to": 0,
+      "from": null,
+      "actor": 2,
+      "event": "ORDER_CREATED",
+      "command": 1,
+      "details": null,
+      "resource": 1,
+      "aggregate": "ORDER"
+    },
+    {
+      "id": 2,
+      "to": 1,
+      "from": 2,
+      "actor": 2,
+      "event": "ALLOCATE",
+      "command": 1,
+      "details": null,
+      "resource": 2,
+      "aggregate": "DRONE"
+    },
+    {
+      "id": 3,
+      "to": 1,
+      "from": 0,
+      "actor": 2,
+      "event": "PAY",
+      "command": 2,
+      "details": null,
+      "resource": 1,
+      "aggregate": "ORDER"
+    },
+    {
+      "id": 4,
+      "to": 2,
+      "from": 1,
+      "actor": 5,
+      "event": "SHIP",
+      "command": 3,
+      "details": null,
+      "resource": 1,
+      "aggregate": "ORDER"
+    },
+    {
+      "id": 5,
+      "to": 3,
+      "from": 2,
+      "actor": 2,
+      "event": "RECEIVE",
+      "command": 4,
+      "details": null,
+      "resource": 1,
+      "aggregate": "ORDER"
+    },
+    {
+      "id": 7,
+      "to": 0,
+      "from": null,
+      "actor": 2,
+      "event": "ORDER_CREATED",
+      "command": 6,
+      "details": null,
+      "resource": 2,
+      "aggregate": "ORDER"
+    },
+    {
+      "id": 8,
+      "to": 1,
+      "from": 2,
+      "actor": 2,
+      "event": "ALLOCATE",
+      "command": 6,
+      "details": null,
+      "resource": 3,
+      "aggregate": "DRONE"
+    },
+    {
+      "id": 9,
+      "to": 1,
+      "from": 0,
+      "actor": 2,
+      "event": "PAY",
+      "command": 7,
+      "details": null,
+      "resource": 2,
+      "aggregate": "ORDER"
+    },
+    {
+      "id": 10,
+      "to": 2,
+      "from": 1,
+      "actor": 5,
+      "event": "SHIP",
+      "command": 8,
+      "details": null,
+      "resource": 2,
+      "aggregate": "ORDER"
+    },
+    {
+      "id": 11,
+      "to": 3,
+      "from": 2,
+      "actor": 2,
+      "event": "RECEIVE",
+      "command": 9,
+      "details": null,
+      "resource": 2,
+      "aggregate": "ORDER"
+    },
+    {
+      "id": 17,
+      "to": 0,
+      "from": null,
+      "actor": 2,
+      "event": "ORDER_CREATED",
+      "command": 13,
+      "details": null,
+      "resource": 3,
+      "aggregate": "ORDER"
+    },
+    {
+      "id": 18,
+      "to": 0,
+      "from": 1,
+      "actor": 2,
+      "event": "ALLOCATE",
+      "command": 13,
+      "details": null,
+      "resource": 4,
+      "aggregate": "DRONE"
+    },
+    {
+      "id": 19,
+      "to": 0,
+      "from": null,
+      "actor": 2,
+      "event": "ORDER_CREATED",
+      "command": 14,
+      "details": null,
+      "resource": 4,
+      "aggregate": "ORDER"
+    },
+    {
+      "id": 20,
+      "to": 0,
+      "from": 1,
+      "actor": 2,
+      "event": "ALLOCATE",
+      "command": 14,
+      "details": null,
+      "resource": 5,
+      "aggregate": "DRONE"
+    },
+    {
+      "id": 21,
+      "to": 3,
+      "from": 3,
+      "actor": 1,
+      "event": "TIMEOUT_NO_ACTION",
+      "command": 16,
+      "details": null,
+      "resource": 2,
+      "aggregate": "ORDER"
+    },
+    {
+      "id": 22,
+      "to": 3,
+      "from": 3,
+      "actor": 1,
+      "event": "TIMEOUT_NO_ACTION",
+      "command": 15,
+      "details": null,
+      "resource": 1,
+      "aggregate": "ORDER"
+    },
+    {
+      "id": 23,
+      "to": 5,
+      "from": 0,
+      "actor": 1,
+      "event": "TIMEOUT_CANCEL",
+      "command": 17,
+      "details": null,
+      "resource": 3,
+      "aggregate": "ORDER"
+    },
+    {
+      "id": 24,
+      "to": 1,
+      "from": 0,
+      "actor": 1,
+      "event": "RELEASE",
+      "command": 17,
+      "details": null,
+      "resource": 4,
+      "aggregate": "DRONE"
+    },
+    {
+      "id": 25,
+      "to": 0,
+      "from": null,
+      "actor": 2,
+      "event": "ORDER_CREATED",
+      "command": 18,
+      "details": null,
+      "resource": 5,
+      "aggregate": "ORDER"
+    },
+    {
+      "id": 26,
+      "to": 0,
+      "from": 1,
+      "actor": 2,
+      "event": "ALLOCATE",
+      "command": 18,
+      "details": null,
+      "resource": 1,
+      "aggregate": "DRONE"
+    },
+    {
+      "id": 27,
+      "to": 1,
+      "from": 0,
+      "actor": 2,
+      "event": "PAY",
+      "command": 19,
+      "details": null,
+      "resource": 5,
+      "aggregate": "ORDER"
+    },
+    {
+      "id": 28,
+      "to": 2,
+      "from": 1,
+      "actor": 5,
+      "event": "SHIP",
+      "command": 20,
+      "details": null,
+      "resource": 5,
+      "aggregate": "ORDER"
+    },
+    {
+      "id": 29,
+      "to": 3,
+      "from": 2,
+      "actor": 2,
+      "event": "RECEIVE",
+      "command": 21,
+      "details": null,
+      "resource": 5,
+      "aggregate": "ORDER"
+    },
+    {
+      "id": 31,
+      "to": 1,
+      "from": 0,
+      "actor": 5,
+      "event": "RETURN_APPROVED",
+      "command": 24,
+      "details": null,
+      "resource": 1,
+      "aggregate": "RETURN"
+    },
+    {
+      "id": 32,
+      "to": 4,
+      "from": 3,
+      "actor": 5,
+      "event": "REVIEW_RETURN",
+      "command": 24,
+      "details": null,
+      "resource": 5,
+      "aggregate": "ORDER"
+    },
+    {
+      "id": 33,
+      "to": 1,
+      "from": 0,
+      "actor": 5,
+      "event": "RELEASE",
+      "command": 24,
+      "details": null,
+      "resource": 1,
+      "aggregate": "DRONE"
+    },
+    {
+      "id": 35,
+      "to": 0,
+      "from": null,
+      "actor": 5,
+      "event": "TICKET_CREATED",
+      "command": 25,
+      "details": null,
+      "resource": 2,
+      "aggregate": "TICKET"
+    },
+    {
+      "id": 37,
+      "to": 0,
+      "from": 0,
+      "actor": 5,
+      "event": "ASSIGN_REPAIR",
+      "command": 26,
+      "details": {
+        "version": "1",
+        "toAssigneeId": "4",
+        "fromAssigneeId": null
+      },
+      "resource": 2,
+      "aggregate": "TICKET"
+    },
+    {
+      "id": 38,
+      "to": 0,
+      "from": 0,
+      "actor": 5,
+      "event": "ASSIGN_REPAIR",
+      "command": 28,
+      "details": {
+        "version": "2",
+        "toAssigneeId": "3",
+        "fromAssigneeId": "4"
+      },
+      "resource": 2,
+      "aggregate": "TICKET"
+    },
+    {
+      "id": 39,
+      "to": 1,
+      "from": 0,
+      "actor": 3,
+      "event": "START_REPAIR",
+      "command": 29,
+      "details": null,
+      "resource": 2,
+      "aggregate": "TICKET"
+    },
+    {
+      "id": 40,
+      "to": 4,
+      "from": 1,
+      "actor": 3,
+      "event": "SUBMIT_REPAIR",
+      "command": 30,
+      "details": null,
+      "resource": 2,
+      "aggregate": "TICKET"
+    },
+    {
+      "id": 41,
+      "to": 2,
+      "from": 4,
+      "actor": 5,
+      "event": "ACCEPT_REPAIR",
+      "command": 31,
+      "details": null,
+      "resource": 2,
+      "aggregate": "TICKET"
+    }
+  ],
+  "commands": [
+    {
+      "id": 1,
+      "actor": 2,
+      "resource": 1,
+      "operation": "CREATE_ORDER"
+    },
+    {
+      "id": 2,
+      "actor": 2,
+      "resource": 1,
+      "operation": "PAY"
+    },
+    {
+      "id": 3,
+      "actor": 5,
+      "resource": 1,
+      "operation": "SHIP"
+    },
+    {
+      "id": 4,
+      "actor": 2,
+      "resource": 1,
+      "operation": "RECEIVE"
+    },
+    {
+      "id": 5,
+      "actor": 2,
+      "resource": 1,
+      "operation": "REPORT_FAULT"
+    },
+    {
+      "id": 6,
+      "actor": 2,
+      "resource": 2,
+      "operation": "CREATE_ORDER"
+    },
+    {
+      "id": 7,
+      "actor": 2,
+      "resource": 2,
+      "operation": "PAY"
+    },
+    {
+      "id": 8,
+      "actor": 5,
+      "resource": 2,
+      "operation": "SHIP"
+    },
+    {
+      "id": 9,
+      "actor": 2,
+      "resource": 2,
+      "operation": "RECEIVE"
+    },
+    {
+      "id": 10,
+      "actor": 2,
+      "resource": 2,
+      "operation": "REPORT_FAULT"
+    },
+    {
+      "id": 11,
+      "actor": 5,
+      "resource": 2,
+      "operation": "AUDIT_FAULT"
+    },
+    {
+      "id": 12,
+      "actor": 5,
+      "resource": 1,
+      "operation": "ASSIGN_REPAIR"
+    },
+    {
+      "id": 13,
+      "actor": 2,
+      "resource": 3,
+      "operation": "CREATE_ORDER"
+    },
+    {
+      "id": 14,
+      "actor": 2,
+      "resource": 4,
+      "operation": "CREATE_ORDER"
+    },
+    {
+      "id": 17,
+      "actor": 1,
+      "resource": 3,
+      "operation": "TIMEOUT_CANCEL"
+    },
+    {
+      "id": 18,
+      "actor": 2,
+      "resource": 5,
+      "operation": "CREATE_ORDER"
+    },
+    {
+      "id": 19,
+      "actor": 2,
+      "resource": 5,
+      "operation": "PAY"
+    },
+    {
+      "id": 20,
+      "actor": 5,
+      "resource": 5,
+      "operation": "SHIP"
+    },
+    {
+      "id": 21,
+      "actor": 2,
+      "resource": 5,
+      "operation": "RECEIVE"
+    },
+    {
+      "id": 22,
+      "actor": 2,
+      "resource": 5,
+      "operation": "APPLY_RETURN"
+    },
+    {
+      "id": 24,
+      "actor": 5,
+      "resource": 5,
+      "operation": "REVIEW_RETURN"
+    },
+    {
+      "id": 25,
+      "actor": 5,
+      "resource": 1,
+      "operation": "AUDIT_FAULT"
+    },
+    {
+      "id": 26,
+      "actor": 5,
+      "resource": 2,
+      "operation": "ASSIGN_REPAIR"
+    },
+    {
+      "id": 28,
+      "actor": 5,
+      "resource": 2,
+      "operation": "ASSIGN_REPAIR"
+    },
+    {
+      "id": 29,
+      "actor": 3,
+      "resource": 2,
+      "operation": "START_REPAIR"
+    },
+    {
+      "id": 30,
+      "actor": 3,
+      "resource": 2,
+      "operation": "SUBMIT_REPAIR"
+    },
+    {
+      "id": 31,
+      "actor": 5,
+      "resource": 2,
+      "operation": "ACCEPT_REPAIR"
+    }
+  ],
+  "tasks": [
+    {
+      "error": null,
+      "order": 3,
+      "result": "CANCELLED",
+      "status": "DONE",
+      "attempts": 1
+    },
+    {
+      "error": "COMMAND_FAILURE",
+      "order": 4,
+      "result": null,
+      "status": "FAILED",
+      "attempts": 1
+    }
+  ],
+  "gold_passed": true
+}

@@ -1,5 +1,7 @@
 # LeaseGuard · 租赁履约与维修责任闭环
 
+[![Java MySQL Vue CI](https://github.com/LeonaKTH/LeaseGuard/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/LeonaKTH/LeaseGuard/actions/workflows/ci.yml)
+
 LeaseGuard让归还、维修交付和超时取消有明确的责任与数据库事实：用户提交归还不会立即释放库存，技师提交完成不会直接恢复设备，后台任务重试不会重复归还库存。
 
 基于[springmeng/Drone-Rental-System](https://github.com/springmeng/Drone-Rental-System)固定源码二次开发。保留上游基础业务与布局，个人增量聚焦事务一致性、权限/派工、可靠任务、核心全栈和可复现验证；[上游归属](UPSTREAM.md)与[变更边界](CHANGES_FROM_UPSTREAM.md)可核验。
@@ -24,9 +26,21 @@ Java21、Spring Boot3.5.16、Spring Security、MyBatis-Plus、MySQL8.4、Flyway 
 
 ## 证据而非功能堆砌
 
-G5本机92项Java（22单元/70真实MySQL）、原270轮G2竞争及G3/G4各60轮、91项HTTP、5项前端单元/类型/build通过。10万合成订单下订单/维修列表仍6条SQL，30组分页结果哈希相同。完成并发1/10/30各3轮前后对照及任务开关实验，共24轮真实HTTP测量；数据、环境、失败和剩余瓶颈全部保留。
+G5本机92项Java（22单元/70真实MySQL）、原270轮G2竞争及G3/G4各60轮、91项HTTP、5项前端单元/类型/build通过。10万合成订单下订单/维修列表仍6条SQL，30组分页结果哈希相同。完成并发1/10/30各3轮前后对照及任务开关实验，共24轮、909,004次已认证HTTP读取请求；数据、环境、失败和剩余瓶颈全部保留。
 
 这些是单机、明确场景的实验，不是生产TPS。硬件i7-14650HX/24逻辑核心/约16GB、MySQL128MiB缓冲池、Hikari10；完整指标及深OFFSET约0.7秒的限制见[性能报告](docs/G5_PERFORMANCE.md)。独立候选构建/浏览器验证结果见[发布准备](docs/G5_RELEASE_READINESS.md)，不把远程CI配置当成已运行。
+
+## 实际业务页面
+
+截图来自G5独立本机合成账号；[远程CI结果](docs/PUBLICATION.md)另行记录。
+
+<details>
+<summary>归还审核与管理员独立维修验收</summary>
+
+![订单归还经审核后单次释放库存](docs/images/04-return-accepted.png)
+![维修经过技师提交和管理员独立验收](docs/images/08-repair-admin-accepted.png)
+
+</details>
 
 ## 从这里开始
 
@@ -41,4 +55,4 @@ G5本机92项Java（22单元/70真实MySQL）、原270轮G2竞争及G3/G4各60�
 
 Boot3.5.16已结束OSS维护；兼容安全补丁已核验，但Maven仍有2项Spring MVC条件性公告，不能声称0漏洞或生产安全就绪。上传/下载因无私有附件模型默认关闭，Swagger本地可见，JWT localStorage及生产TLS/限流/密钥管理仍需评估。Flyway/MySQL兼容提示、大前端chunk、旧非核心JS页面也没有隐藏。
 
-本轮仅本地工程和公开源码候选准备。没有推送GitHub、运行远程Actions、部署公网或实施LangChain4j。
+G5历史阶段只完成本地验收和源码候选；本仓库现已Public，真实GitHub runner验证见[公开验收](docs/PUBLICATION.md)。没有部署公网后端、真实支付/飞行控制或实施LangChain4j。

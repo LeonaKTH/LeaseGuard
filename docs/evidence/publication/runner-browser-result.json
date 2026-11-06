@@ -1,0 +1,1717 @@
+{
+  "status": "PASSED",
+  "tool": "playwright-core1.64.1",
+  "chrome": "156.0.8078.4",
+  "origin": "http://127.0.0.1:15174",
+  "backend": "http://127.0.0.1:18084",
+  "isolatedContexts": 4,
+  "checks": [
+    {
+      "name": "UI login user",
+      "passed": true
+    },
+    {
+      "name": "UI login admin",
+      "passed": true
+    },
+    {
+      "name": "A device list/detail route and rent navigation work",
+      "passed": true
+    },
+    {
+      "name": "A browser actually created new order",
+      "passed": true
+    },
+    {
+      "name": "A in-flight button disabled",
+      "passed": true
+    },
+    {
+      "name": "A repeated real click prevented",
+      "passed": true
+    },
+    {
+      "name": "real MySQL Gold return-submitted",
+      "passed": true
+    },
+    {
+      "name": "A uncertain retry uses original key",
+      "passed": true
+    },
+    {
+      "name": "real MySQL Gold return-approved",
+      "passed": true
+    },
+    {
+      "name": "A user create/pay/receive/return and admin accept persisted",
+      "passed": true
+    },
+    {
+      "name": "UI login admin-stale",
+      "passed": true
+    },
+    {
+      "name": "B genuine stale assignment409 refreshes server version",
+      "passed": true
+    },
+    {
+      "name": "UI login techA",
+      "passed": true
+    },
+    {
+      "name": "B other technician model absent",
+      "passed": true
+    },
+    {
+      "name": "B direct other ticket denied404",
+      "passed": true
+    },
+    {
+      "name": "real MySQL Gold repair-started",
+      "passed": true
+    },
+    {
+      "name": "real MySQL Gold repair-submitted",
+      "passed": true
+    },
+    {
+      "name": "real MySQL Gold repair-accepted",
+      "passed": true
+    },
+    {
+      "name": "B real UI audit/assign/start/submit/admin acceptance completed",
+      "passed": true
+    },
+    {
+      "name": "B user own maintenance progress is real and scoped",
+      "passed": true
+    },
+    {
+      "name": "C real scheduled cancellation visible in admin task/order audit",
+      "passed": true
+    },
+    {
+      "name": "C failed tasks readonly no unsafe retry",
+      "passed": true
+    },
+    {
+      "name": "real MySQL Gold final",
+      "passed": true
+    },
+    {
+      "name": "no page exceptions",
+      "passed": true
+    },
+    {
+      "name": "no unexpected HTTP500",
+      "passed": true
+    },
+    {
+      "name": "strict origin allowlist",
+      "passed": true
+    }
+  ],
+  "network": [
+    {
+      "role": "user",
+      "path": "/api/auth/login",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/orders",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/drone/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/auth/admin/login",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/user/qualification/stats",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/order/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/drone/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/drone/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/drone/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/drone/detail/1",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/orders",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/drone/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/order/create",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/orders",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/audit/orders/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/order/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/order/5/pay",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/orders",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/order/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/audit/orders/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/order/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/user/qualification/stats",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/drone/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/order/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/order/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/audit/orders/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/order/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/order/5/ship",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/order/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/order/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/audit/orders/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/orders",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/drone/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/order/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/audit/orders/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/orders",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/order/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/order/5/receive",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/orders",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/order/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/audit/orders/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/order/5/return",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/orders",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/order/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/audit/orders/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/orders",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/drone/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/order/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/audit/orders/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/orders",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/order/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/user/qualification/stats",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/order/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/drone/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/order/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/audit/orders/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/order/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/order/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/order/5/return-review",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/order/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/order/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/audit/orders/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/user/qualification/stats",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/order/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/drone/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/order/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/order/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/audit/orders/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/order/5",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/user/qualification/stats",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/technicians",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/fault/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/fault/1/audit",
+      "method": "PUT",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/technicians",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/fault/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/audit/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/technicians",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/fault/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/auth/admin/login",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/order/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/user/qualification/stats",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/drone/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/user/qualification/stats",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/technicians",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/fault/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/audit/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/technicians",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/fault/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/ticket/2/assignment",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/technicians",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/audit/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/fault/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/ticket/2/assignment",
+      "method": "POST",
+      "status": 409
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/technicians",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/audit/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/fault/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/ticket/2/assignment",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/technicians",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/audit/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/fault/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/auth/login",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/audit/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets/2/start",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/audit/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets/2/complete",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/audit/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/audit/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/user/qualification/stats",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/technicians",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/fault/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/audit/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/technicians",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/fault/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/ticket/2/accept",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/technicians",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/audit/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/fault/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/user/qualification/stats",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/technicians",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/fault/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/audit/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/technicians",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/fault/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/audit/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/fault/my",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/orders",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/fault/1/maintenance",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/audit/tickets/2",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/fault/my",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "user",
+      "path": "/api/user/orders",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/tasks",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/user/qualification/stats",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/tasks",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/order/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/drone/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/order/3",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/audit/orders/3",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/order/list",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/order/3",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/info",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/user/qualification",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/tasks",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/user/qualification/stats",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/tasks",
+      "method": "GET",
+      "status": 200
+    }
+  ],
+  "keys": [
+    {
+      "role": "user",
+      "path": "/api/order/create",
+      "key": "4daa20de-802d-4c82-ad7d-5502e8c6aa77"
+    },
+    {
+      "role": "user",
+      "path": "/api/order/5/pay",
+      "key": "d0e8db2f-a290-406d-8cb9-d40e105ea0b6"
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/order/5/ship",
+      "key": "d6c8fdb7-8a92-42f3-a707-896f9defdc80"
+    },
+    {
+      "role": "user",
+      "path": "/api/order/5/receive",
+      "key": "b9854034-53a4-453b-999a-3885bb2eb259"
+    },
+    {
+      "role": "user",
+      "path": "/api/order/5/return",
+      "key": "34854f88-87af-42f9-bd67-a681f481f256"
+    },
+    {
+      "role": "user",
+      "path": "/api/order/5/return",
+      "key": "34854f88-87af-42f9-bd67-a681f481f256"
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/order/5/return-review",
+      "key": "a13ca753-1d57-4990-a296-58a180808a77"
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/fault/1/audit",
+      "key": "3d5e6f29-db0c-47f3-a9c7-43f969a6abd5"
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/ticket/2/assignment",
+      "key": "9471f47a-8ccb-42c8-9de4-d56648e854d8"
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/ticket/2/assignment",
+      "key": "a886c9ca-e9a1-4585-8f4b-71b21d6c3fd1"
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/ticket/2/assignment",
+      "key": "70ed9e5e-1517-4018-94ea-93e47f263cb6"
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets/2/start",
+      "key": "5c7bc1b3-e2ff-49aa-be0b-013bc73b8325"
+    },
+    {
+      "role": "techA",
+      "path": "/api/workbench/tickets/2/complete",
+      "key": "930aa576-1611-43ba-9dfa-0f8478aaf8c7"
+    },
+    {
+      "role": "admin",
+      "path": "/api/admin/maintenance/ticket/2/accept",
+      "key": "b4a10751-98fa-48c8-b581-842d273e770d"
+    }
+  ],
+  "pageErrors": [],
+  "blocked": [],
+  "screenshots": [
+    "01-user-qualification.png",
+    "02-uncertain-result.png",
+    "03-return-persisted.png",
+    "04-return-accepted.png",
+    "05-assignment-conflict.png",
+    "06-assigned-technician.png",
+    "07-technician-wait-acceptance.png",
+    "08-repair-admin-accepted.png",
+    "09-technician-completed.png",
+    "13-user-own-repair-progress.png",
+    "10-scheduled-task-done.png",
+    "11-system-timeout-audit.png",
+    "12-failed-task-readonly.png"
+  ],
+  "raw_traces_private": [
+    "user",
+    "admin",
+    "admin-stale",
+    "techA"
+  ]
+}
