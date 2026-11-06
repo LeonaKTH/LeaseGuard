@@ -14,23 +14,20 @@ jobs:
   verify:
     runs-on: ubuntu-24.04
     timeout-minutes: 25
-    services:
-      mysql:
-        image: mysql:8.4.13
-        env:
-          MYSQL_ROOT_PASSWORD: ${{ secrets.CI_MYSQL_ROOT_PASSWORD }}
-        ports: ['13308:3306']
-        options: >-
-          --health-cmd="mysqladmin ping --silent"
-          --health-interval=10s --health-timeout=5s --health-retries=12
     env:
       MAVEN_OPTS: -Xmx512m
       NODE_OPTIONS: --max-old-space-size=1024
       LEASEGUARD_EVIDENCE_DIR: ${{ github.workspace }}/docs/evidence/ci
       LEASEGUARD_TEST_SHA: ${{ github.sha }}
-      LEASEGUARD_UPLOAD_PATH: ${{ runner.temp }}/uploads/
+      LEASEGUARD_UPLOAD_PATH: ${{ github.workspace }}/.local/uploads/
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Isolated MySQL 8.4 (random ephemeral fallback for fork PRs)
+        env:
+          MYSQL_ROOT_PASSWORD: ${{ secrets.CI_MYSQL_ROOT_PASSWORD }}
+        run: python3 scripts/ci/service.py start
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -41,11 +38,10 @@ jobs:
           node-version: '24.13.0'
           cache: npm
           cache-dependency-path: drone-rental/drone-rental-web/package-lock.json
-      - name: Fresh least privilege databases (required secret, never skipped)
-        env:
-          MYSQL_ROOT_PASSWORD: ${{ secrets.CI_MYSQL_ROOT_PASSWORD }}
-          MYSQL_CONTAINER: ${{ job.services.mysql.id }}
+      - name: Fresh least privilege databases (real MySQL, never skipped)
         run: python3 scripts/ci/prepare.py
+      - name: CI service isolation tests
+        run: python3 -m unittest discover -s scripts/ci -p 'test_*.py'
       - name: Compile explicit CI fixture tool
         working-directory: drone-rental
         run: |
@@ -66,7 +62,6 @@ jobs:
       - name: Controlled browser smoke and business chains
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.browser }}
         env:
-          MYSQL_CONTAINER: ${{ job.services.mysql.id }}
           LEASEGUARD_DB_URL: jdbc:mysql://127.0.0.1:13308/leaseguard_dev?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
           LEASEGUARD_DB_USER: leaseguard_dev
           LEASEGUARD_DB_PASSWORD: ${{ env.LEASEGUARD_DEV_PASSWORD }}
@@ -86,3 +81,6 @@ jobs:
             docs/evidence/ci/browser/db-*.json
             docs/evidence/ci/browser/*.png
           retention-days: 7
+      - name: Stop only this job's MySQL container
+        if: always()
+        run: python3 scripts/ci/service.py stop
