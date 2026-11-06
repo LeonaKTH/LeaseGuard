@@ -8,6 +8,7 @@ GitHub首次真实运行发现作业级env使用不受支持的runner.temp表达
 - `scripts/ci/service.py`：仅GitHub runner可运行。main使用新配置的CI专用Secret；Fork PR没有Secret时，为该次独立MySQL实例生成32随机字节口令，先mask、仅环境传递，不向Fork提供仓库Secret。数据库只绑定127.0.0.1，按run标签验证后清理自己容器。
 - `scripts/ci/test_service.py`：验证缺Secret随机生成、口令不进入参数、本机拒绝和跨任务清理拒绝；另以真实本地子进程回归“首次镜像下载stderr混入容器ID”问题，共五项，不在本机启动Docker。
 - `CiConfigG4Test`：适应显式容器启动方式，继续断言固定MySQL版本、loopback、随机口令/掩码、完整检查与无跳过；未修改库存、并发、角色、维修或任务Gold。
+- `scripts/ci/browser.sh`与`.gitattributes`：候选保留的CRLF在Linux Bash把pipefail解释成含回车的无效选项；仅将该脚本转为LF并固定shell换行，CI配置测试增加LF断言。没有放宽浏览器断言。
 - README与公开验收说明按实际远程结果整理，旧G5报告仍是其当时的本地阶段记录。
 
 业务生产代码、Flyway V1—V6及依赖锁文件未因发布改动。原ZIP保持不变；当前MANIFEST.sha256随公开提交重新生成，不能再将最终公开树称为原ZIP逐字节副本。精确新增/修改列表由首次提交到当前main的Git diff核验。

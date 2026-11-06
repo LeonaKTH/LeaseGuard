@@ -15,6 +15,6 @@ class CiConfigG4Test {
  }
  @Test void ciScriptsRefuseExistingDatabaseAndKeepCredentialsOutOfArguments()throws Exception{
   String prepare=Files.readString(Path.of("../scripts/ci/prepare.py"));assertTrue(prepare.contains("GITHUB_ACTIONS"));assertTrue(prepare.contains("Never reset a preexisting catalog"));assertTrue(prepare.contains("SELECT,INSERT,UPDATE,DELETE ON"));assertTrue(prepare.contains("::add-mask::"));assertFalse(prepare.contains("DROP "));assertFalse(prepare.contains("TRUNCATE "));
-  String browser=Files.readString(Path.of("../scripts/ci/browser.sh"));assertTrue(browser.contains("set -euo pipefail"));assertTrue(browser.contains("trap "));assertTrue(browser.contains("LEASEGUARD_G4_SNAPSHOT_TOOL"));assertTrue(browser.contains("node browser-tests/g4.mjs"));
+  String browser=Files.readString(Path.of("../scripts/ci/browser.sh"));assertFalse(browser.contains("\r"),"Linux CI shell scripts must be stored as LF");assertTrue(browser.contains("set -euo pipefail"));assertTrue(browser.contains("trap "));assertTrue(browser.contains("LEASEGUARD_G4_SNAPSHOT_TOOL"));assertTrue(browser.contains("node browser-tests/g4.mjs"));
  }
 }
