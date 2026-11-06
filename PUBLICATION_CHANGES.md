@@ -6,7 +6,7 @@ GitHub首次真实运行发现作业级env使用不受支持的runner.temp表达
 
 - `.github/workflows/ci.yml`：改为允许的github.workspace路径，checkout不保留凭据；CI容器用专用脚本启动/清理，保留Java21、MySQL8.4.13、Node24、全部Maven/MySQL/Vue和可选浏览器检查；contents:read，不使用pull_request_target。
 - `scripts/ci/service.py`：仅GitHub runner可运行。main使用新配置的CI专用Secret；Fork PR没有Secret时，为该次独立MySQL实例生成32随机字节口令，先mask、仅环境传递，不向Fork提供仓库Secret。数据库只绑定127.0.0.1，按run标签验证后清理自己容器。
-- `scripts/ci/test_service.py`：验证缺Secret随机生成、口令不进入参数、本机拒绝和跨任务清理拒绝四个边界；不在本机启动Docker。
+- `scripts/ci/test_service.py`：验证缺Secret随机生成、口令不进入参数、本机拒绝和跨任务清理拒绝；另以真实本地子进程回归“首次镜像下载stderr混入容器ID”问题，共五项，不在本机启动Docker。
 - `CiConfigG4Test`：适应显式容器启动方式，继续断言固定MySQL版本、loopback、随机口令/掩码、完整检查与无跳过；未修改库存、并发、角色、维修或任务Gold。
 - README与公开验收说明按实际远程结果整理，旧G5报告仍是其当时的本地阶段记录。
 

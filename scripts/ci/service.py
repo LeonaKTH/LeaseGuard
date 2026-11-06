@@ -2,7 +2,7 @@
 import os,re,secrets,subprocess,sys,time
 IMAGE='mysql:8.4.13';BIND='127.0.0.1:13308:3306'
 def docker(*args,env=None):
-    return subprocess.check_output(['docker',*args],env=env,text=True,stderr=subprocess.STDOUT).strip()
+    return subprocess.check_output(['docker',*args],env=env,text=True,stderr=subprocess.PIPE).strip()
 def main(mode):
     assert os.environ.get('GITHUB_ACTIONS')=='true','CI service only'
     run=os.environ['GITHUB_RUN_ID'];assert run.isdigit()

@@ -1,5 +1,5 @@
 """Validate CI credential/cleanup boundaries without running Docker on a developer's machine."""
-import contextlib,io,os,tempfile,unittest
+import contextlib,io,os,tempfile,unittest,sys
 from pathlib import Path
 from unittest.mock import patch
 import service
@@ -30,4 +30,10 @@ class ServiceSafetyTest(unittest.TestCase):
         with patch.dict(os.environ,{'GITHUB_ACTIONS':'true','GITHUB_RUN_ID':'123','MYSQL_CONTAINER':'a'*64},clear=True),patch.object(service,'docker',return_value='999') as docker:
             with self.assertRaises(AssertionError):service.main('stop')
             self.assertEqual(docker.call_count,1)
+    def test_image_pull_stderr_cannot_corrupt_container_id(self):
+        actual=service.subprocess.check_output;identifier='b'*64
+        def real_process(_args,**kwargs):
+            return actual([sys.executable,'-c',"import sys;print('image pull progress',file=sys.stderr);print('"+identifier+"')"],**kwargs)
+        with patch.object(service.subprocess,'check_output',side_effect=real_process):
+            self.assertEqual(service.docker('run','test-image'),identifier)
 if __name__=='__main__':unittest.main()
