@@ -1,0 +1,1544 @@
+{
+  "source": "https://api.osv.dev/v1/querybatch",
+  "queried_at": "2026-11-06T01:42:59+0800",
+  "dependencies": [
+    {
+      "group": "org.flywaydb",
+      "artifact": "flyway-core",
+      "version": "11.7.2",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "com.fasterxml.jackson.dataformat",
+      "artifact": "jackson-dataformat-toml",
+      "version": "2.21.7",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "com.fasterxml.jackson.core",
+      "artifact": "jackson-core",
+      "version": "2.21.7",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "com.fasterxml.jackson.datatype",
+      "artifact": "jackson-datatype-jsr310",
+      "version": "2.21.7",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "com.fasterxml.jackson.core",
+      "artifact": "jackson-annotations",
+      "version": "2.21",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.flywaydb",
+      "artifact": "flyway-mysql",
+      "version": "11.7.2",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "org.springframework.boot",
+      "artifact": "spring-boot-starter-security",
+      "version": "3.5.16",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework.boot",
+      "artifact": "spring-boot-starter",
+      "version": "3.5.16",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework.boot",
+      "artifact": "spring-boot",
+      "version": "3.5.16",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework.boot",
+      "artifact": "spring-boot-starter-logging",
+      "version": "3.5.16",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "ch.qos.logback",
+      "artifact": "logback-classic",
+      "version": "1.5.34",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "ch.qos.logback",
+      "artifact": "logback-core",
+      "version": "1.5.34",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "org.apache.logging.log4j",
+      "artifact": "log4j-to-slf4j",
+      "version": "2.25.5",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.apache.logging.log4j",
+      "artifact": "log4j-api",
+      "version": "2.25.5",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.slf4j",
+      "artifact": "jul-to-slf4j",
+      "version": "2.0.18",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "jakarta.annotation",
+      "artifact": "jakarta.annotation-api",
+      "version": "2.1.1",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "EPL 2.0",
+          "url": "http://www.eclipse.org/legal/epl-2.0"
+        },
+        {
+          "name": "GPL2 w/ CPE",
+          "url": "https://www.gnu.org/software/classpath/license.html"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.yaml",
+      "artifact": "snakeyaml",
+      "version": "2.4",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework",
+      "artifact": "spring-aop",
+      "version": "6.2.19",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework",
+      "artifact": "spring-beans",
+      "version": "6.2.19",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework.security",
+      "artifact": "spring-security-config",
+      "version": "6.5.11",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework",
+      "artifact": "spring-context",
+      "version": "6.2.19",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework.security",
+      "artifact": "spring-security-web",
+      "version": "6.5.11",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework",
+      "artifact": "spring-expression",
+      "version": "6.2.19",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework.security",
+      "artifact": "spring-security-test",
+      "version": "6.5.11",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework.security",
+      "artifact": "spring-security-core",
+      "version": "6.5.11",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework.security",
+      "artifact": "spring-security-crypto",
+      "version": "6.5.11",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "io.micrometer",
+      "artifact": "micrometer-observation",
+      "version": "1.15.12",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "io.micrometer",
+      "artifact": "micrometer-commons",
+      "version": "1.15.12",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework",
+      "artifact": "spring-core",
+      "version": "6.2.19",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework",
+      "artifact": "spring-jcl",
+      "version": "6.2.19",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework",
+      "artifact": "spring-test",
+      "version": "6.2.19",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework.boot",
+      "artifact": "spring-boot-starter-web",
+      "version": "3.5.16",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework.boot",
+      "artifact": "spring-boot-starter-json",
+      "version": "3.5.16",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "com.fasterxml.jackson.datatype",
+      "artifact": "jackson-datatype-jdk8",
+      "version": "2.21.7",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "com.fasterxml.jackson.module",
+      "artifact": "jackson-module-parameter-names",
+      "version": "2.21.7",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "org.springframework.boot",
+      "artifact": "spring-boot-starter-tomcat",
+      "version": "3.5.16",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.apache.tomcat.embed",
+      "artifact": "tomcat-embed-core",
+      "version": "10.1.61",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.apache.tomcat.embed",
+      "artifact": "tomcat-embed-websocket",
+      "version": "10.1.61",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework",
+      "artifact": "spring-web",
+      "version": "6.2.19",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework",
+      "artifact": "spring-webmvc",
+      "version": "6.2.19",
+      "scope": "compile",
+      "vulnerabilities": [
+        {
+          "id": "GHSA-j9f9-w8pj-32f8",
+          "modified": "2026-10-07T13:30:04.802772Z"
+        },
+        {
+          "id": "GHSA-pc63-qcmh-9cmg",
+          "modified": "2026-10-05T23:30:04.884745Z"
+        }
+      ],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework.boot",
+      "artifact": "spring-boot-starter-validation",
+      "version": "3.5.16",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.apache.tomcat.embed",
+      "artifact": "tomcat-embed-el",
+      "version": "10.1.61",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.hibernate.validator",
+      "artifact": "hibernate-validator",
+      "version": "8.0.3.Final",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "jakarta.validation",
+      "artifact": "jakarta.validation-api",
+      "version": "3.0.2",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.jboss.logging",
+      "artifact": "jboss-logging",
+      "version": "3.6.3.Final",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License 2.0",
+          "url": "https://repository.jboss.org/licenses/apache-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "com.fasterxml",
+      "artifact": "classmate",
+      "version": "1.7.3",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "com.baomidou",
+      "artifact": "mybatis-plus-spring-boot3-starter",
+      "version": "3.5.18",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "com.baomidou",
+      "artifact": "mybatis-plus",
+      "version": "3.5.18",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "com.baomidou",
+      "artifact": "mybatis-plus-core",
+      "version": "3.5.18",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "com.baomidou",
+      "artifact": "mybatis-plus-annotation",
+      "version": "3.5.18",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "com.baomidou",
+      "artifact": "mybatis-plus-spring",
+      "version": "3.5.18",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.mybatis",
+      "artifact": "mybatis",
+      "version": "3.5.19",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "org.mybatis",
+      "artifact": "mybatis-spring",
+      "version": "3.0.6",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "com.baomidou",
+      "artifact": "mybatis-plus-spring-boot-autoconfigure",
+      "version": "3.5.18",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "com.baomidou",
+      "artifact": "mybatis-plus-spring-boot-native-image",
+      "version": "3.5.18",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework.boot",
+      "artifact": "spring-boot-autoconfigure",
+      "version": "3.5.16",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework.boot",
+      "artifact": "spring-boot-starter-jdbc",
+      "version": "3.5.16",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "com.zaxxer",
+      "artifact": "HikariCP",
+      "version": "6.3.3",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework",
+      "artifact": "spring-jdbc",
+      "version": "6.2.19",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework",
+      "artifact": "spring-tx",
+      "version": "6.2.19",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "com.baomidou",
+      "artifact": "mybatis-plus-jsqlparser",
+      "version": "3.5.18",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "com.github.jsqlparser",
+      "artifact": "jsqlparser",
+      "version": "5.4",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "GNU Library or Lesser General Public License (LGPL) V2.1",
+          "url": "http://www.gnu.org/licenses/lgpl-2.1.html"
+        },
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "com.baomidou",
+      "artifact": "mybatis-plus-jsqlparser-common",
+      "version": "3.5.18",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "com.baomidou",
+      "artifact": "mybatis-plus-extension",
+      "version": "3.5.18",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "com.mysql",
+      "artifact": "mysql-connector-j",
+      "version": "9.7.0",
+      "scope": "runtime",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "The GNU General Public License, v2 with Universal FOSS Exception, v1.0",
+          "url": null
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "io.jsonwebtoken",
+      "artifact": "jjwt-api",
+      "version": "0.12.6",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "io.jsonwebtoken",
+      "artifact": "jjwt-impl",
+      "version": "0.12.6",
+      "scope": "runtime",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "io.jsonwebtoken",
+      "artifact": "jjwt-jackson",
+      "version": "0.12.6",
+      "scope": "runtime",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "com.fasterxml.jackson.core",
+      "artifact": "jackson-databind",
+      "version": "2.21.7",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springdoc",
+      "artifact": "springdoc-openapi-starter-webmvc-ui",
+      "version": "2.8.9",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "org.springdoc",
+      "artifact": "springdoc-openapi-starter-webmvc-api",
+      "version": "2.8.9",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "org.springdoc",
+      "artifact": "springdoc-openapi-starter-common",
+      "version": "2.8.9",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "io.swagger.core.v3",
+      "artifact": "swagger-core-jakarta",
+      "version": "2.2.30",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "org.apache.commons",
+      "artifact": "commons-lang3",
+      "version": "3.18.0",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "io.swagger.core.v3",
+      "artifact": "swagger-annotations-jakarta",
+      "version": "2.2.30",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "io.swagger.core.v3",
+      "artifact": "swagger-models-jakarta",
+      "version": "2.2.30",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "com.fasterxml.jackson.dataformat",
+      "artifact": "jackson-dataformat-yaml",
+      "version": "2.21.7",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "org.webjars",
+      "artifact": "swagger-ui",
+      "version": "5.21.0",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": null
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.webjars",
+      "artifact": "webjars-locator-lite",
+      "version": "1.1.3",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "MIT",
+          "url": "https://github.com/webjars/webjars-locator-lite/blob/main/LICENSE.md"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.jspecify",
+      "artifact": "jspecify",
+      "version": "1.0.0",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "The Apache License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "cn.hutool",
+      "artifact": "hutool-all",
+      "version": "5.8.22",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "org.projectlombok",
+      "artifact": "lombok",
+      "version": "1.18.46",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "The MIT License",
+          "url": "https://projectlombok.org/LICENSE"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework.boot",
+      "artifact": "spring-boot-starter-test",
+      "version": "3.5.16",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework.boot",
+      "artifact": "spring-boot-test",
+      "version": "3.5.16",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.springframework.boot",
+      "artifact": "spring-boot-test-autoconfigure",
+      "version": "3.5.16",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "com.jayway.jsonpath",
+      "artifact": "json-path",
+      "version": "2.9.0",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.slf4j",
+      "artifact": "slf4j-api",
+      "version": "2.0.18",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "jakarta.xml.bind",
+      "artifact": "jakarta.xml.bind-api",
+      "version": "4.0.5",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "jakarta.activation",
+      "artifact": "jakarta.activation-api",
+      "version": "2.1.4",
+      "scope": "compile",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "EDL 1.0",
+          "url": "http://www.eclipse.org/org/documents/edl-v10.php"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "net.minidev",
+      "artifact": "json-smart",
+      "version": "2.5.2",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "net.minidev",
+      "artifact": "accessors-smart",
+      "version": "2.5.2",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.ow2.asm",
+      "artifact": "asm",
+      "version": "9.7.1",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "BSD-3-Clause",
+          "url": "https://asm.ow2.io/license.html"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.assertj",
+      "artifact": "assertj-core",
+      "version": "3.27.7",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "net.bytebuddy",
+      "artifact": "byte-buddy",
+      "version": "1.17.8",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "org.awaitility",
+      "artifact": "awaitility",
+      "version": "4.2.2",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "org.hamcrest",
+      "artifact": "hamcrest",
+      "version": "3.0",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "BSD-3-Clause",
+          "url": "https://raw.githubusercontent.com/hamcrest/JavaHamcrest/master/LICENSE"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.junit.jupiter",
+      "artifact": "junit-jupiter",
+      "version": "5.12.2",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Eclipse Public License v2.0",
+          "url": "https://www.eclipse.org/legal/epl-v20.html"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.junit.jupiter",
+      "artifact": "junit-jupiter-api",
+      "version": "5.12.2",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Eclipse Public License v2.0",
+          "url": "https://www.eclipse.org/legal/epl-v20.html"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.opentest4j",
+      "artifact": "opentest4j",
+      "version": "1.3.0",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "The Apache License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.junit.platform",
+      "artifact": "junit-platform-commons",
+      "version": "1.12.2",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Eclipse Public License v2.0",
+          "url": "https://www.eclipse.org/legal/epl-v20.html"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.apiguardian",
+      "artifact": "apiguardian-api",
+      "version": "1.1.2",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "The Apache License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.junit.jupiter",
+      "artifact": "junit-jupiter-params",
+      "version": "5.12.2",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Eclipse Public License v2.0",
+          "url": "https://www.eclipse.org/legal/epl-v20.html"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.junit.jupiter",
+      "artifact": "junit-jupiter-engine",
+      "version": "5.12.2",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Eclipse Public License v2.0",
+          "url": "https://www.eclipse.org/legal/epl-v20.html"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.junit.platform",
+      "artifact": "junit-platform-engine",
+      "version": "1.12.2",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Eclipse Public License v2.0",
+          "url": "https://www.eclipse.org/legal/epl-v20.html"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.mockito",
+      "artifact": "mockito-core",
+      "version": "5.17.0",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "MIT",
+          "url": "https://opensource.org/licenses/MIT"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "net.bytebuddy",
+      "artifact": "byte-buddy-agent",
+      "version": "1.17.8",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "org.objenesis",
+      "artifact": "objenesis",
+      "version": "3.3",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    },
+    {
+      "group": "org.mockito",
+      "artifact": "mockito-junit-jupiter",
+      "version": "5.17.0",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "MIT",
+          "url": "https://opensource.org/licenses/MIT"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.skyscreamer",
+      "artifact": "jsonassert",
+      "version": "1.5.3",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "com.vaadin.external.google",
+      "artifact": "android-json",
+      "version": "0.0.20131108.vaadin1",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [
+        {
+          "name": "Apache License 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "license_inheritance_not_resolved": false
+    },
+    {
+      "group": "org.xmlunit",
+      "artifact": "xmlunit-core",
+      "version": "2.10.4",
+      "scope": "test",
+      "vulnerabilities": [],
+      "next_page_token": null,
+      "direct_pom_licenses": [],
+      "license_inheritance_not_resolved": true
+    }
+  ],
+  "complete": true
+}

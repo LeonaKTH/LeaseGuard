@@ -1,0 +1,9 @@
+{
+  "invalid_oracle_run_retained": true,
+  "reason": "audit Event records were incorrectly checked for userId by client; entire attempt aborted and restarted",
+  "before_mysql_cpu_field_invalid": "recorded startup parent PID44932 instead of listener child42932; do not interpret zeros as MySQL CPU",
+  "after_mysql_cpu_pid": 42932,
+  "instance_deadlock_counter_after_before_matrix": 0,
+  "before_plans_projection": "ID pagination Oracle",
+  "paired_full_projection_ablation_saved": true
+}

@@ -1,0 +1,12 @@
+**/target/
+**/dist/
+**/node_modules/
+**/.local/
+**/__pycache__/
+*.pyc
+*.log
+*.dpapi
+.env
+.env.*
+!.env.example
+**/uploads/

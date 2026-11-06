@@ -1,0 +1,88 @@
+name: LeaseGuard Java MySQL Vue
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: Run controlled Chromium E2E
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    services:
+      mysql:
+        image: mysql:8.4.13
+        env:
+          MYSQL_ROOT_PASSWORD: ${{ secrets.CI_MYSQL_ROOT_PASSWORD }}
+        ports: ['13308:3306']
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s --health-timeout=5s --health-retries=12
+    env:
+      MAVEN_OPTS: -Xmx512m
+      NODE_OPTIONS: --max-old-space-size=1024
+      LEASEGUARD_EVIDENCE_DIR: ${{ github.workspace }}/docs/evidence/ci
+      LEASEGUARD_TEST_SHA: ${{ github.sha }}
+      LEASEGUARD_UPLOAD_PATH: ${{ runner.temp }}/uploads/
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.13.0'
+          cache: npm
+          cache-dependency-path: drone-rental/drone-rental-web/package-lock.json
+      - name: Fresh least privilege databases (required secret, never skipped)
+        env:
+          MYSQL_ROOT_PASSWORD: ${{ secrets.CI_MYSQL_ROOT_PASSWORD }}
+          MYSQL_CONTAINER: ${{ job.services.mysql.id }}
+        run: python3 scripts/ci/prepare.py
+      - name: Compile explicit CI fixture tool
+        working-directory: drone-rental
+        run: |
+          mkdir -p ../docs/evidence/ci
+          mvn -B -ntp test-compile dependency:build-classpath -Dmdep.outputFile=target/ci-classpath.txt -DskipTests
+          java -cp "target/test-classes:target/classes:$(cat target/ci-classpath.txt)" com.drone.rental.CiDatabaseSetup
+      - name: All Java and required real MySQL tests (no database skip)
+        working-directory: drone-rental
+        run: mvn -B -ntp verify
+      - name: Frontend locked install, unit, types, production build, dependency audit
+        working-directory: drone-rental/drone-rental-web
+        run: |
+          npm ci --ignore-scripts
+          npm run test:commands
+          npm run typecheck
+          npm run build
+          npm audit --audit-level=low
+      - name: Controlled browser smoke and business chains
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.browser }}
+        env:
+          MYSQL_CONTAINER: ${{ job.services.mysql.id }}
+          LEASEGUARD_DB_URL: jdbc:mysql://127.0.0.1:13308/leaseguard_dev?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+          LEASEGUARD_DB_USER: leaseguard_dev
+          LEASEGUARD_DB_PASSWORD: ${{ env.LEASEGUARD_DEV_PASSWORD }}
+          LEASEGUARD_MIGRATION_USER: leaseguard_migrate_dev
+          LEASEGUARD_MIGRATION_PASSWORD: ${{ env.LEASEGUARD_DEV_MIGRATION_PASSWORD }}
+        run: bash scripts/ci/browser.sh
+      - name: Test evidence (sanitized JSON and test reports only)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: leaseguard-verification
+          path: |
+            drone-rental/target/surefire-reports/TEST-*.xml
+            drone-rental/target/failsafe-reports/TEST-*.xml
+            docs/evidence/ci/*.json
+            docs/evidence/ci/browser/browser-result.json
+            docs/evidence/ci/browser/db-*.json
+            docs/evidence/ci/browser/*.png
+          retention-days: 7

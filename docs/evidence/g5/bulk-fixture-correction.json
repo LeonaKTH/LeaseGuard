@@ -1,0 +1,10 @@
+{
+  "revision": "v2",
+  "after_both_index_matrices_and_worker_measurements": true,
+  "bulk_event_actor_mismatches_before": 142857,
+  "after": 0,
+  "unpaid_bulk_done_tasks_reclassified_as_synthetic_failed": 1428,
+  "row_counts_and_inventory_unchanged": true,
+  "real_service_cohort_untouched": true,
+  "not_a_production_business_fix": true
+}

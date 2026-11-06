@@ -1,0 +1,123 @@
+{
+  "new_instance_uuid": "d567f5f2-d946-11f1-807f-005056c00001",
+  "private_development_files_used": false,
+  "source_sha": "a26037074d1a0a49968547233a5151ce30f414d2",
+  "java_suites": [
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.drone.rental.CiConfigG4Test"
+    },
+    {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.drone.rental.CommandUnitTest"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.drone.rental.JobSettingsTest"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.drone.rental.JwtUnitTest"
+    },
+    {
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.drone.rental.RoleContractG4Test"
+    },
+    {
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.drone.rental.SecurityUnitTest"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.drone.rental.TransitionsTest"
+    },
+    {
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.drone.rental.AccessG4IT"
+    },
+    {
+      "tests": 17,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.drone.rental.ConcurrencyG2IT"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.drone.rental.FreshMigrationG4IT"
+    },
+    {
+      "tests": 19,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.drone.rental.JobsG3IT"
+    },
+    {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.drone.rental.ListContractsG3IT"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.drone.rental.ListSqlG3IT"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.drone.rental.MigrationG2IT"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.drone.rental.ReleaseBoundaryG5IT"
+    },
+    {
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.drone.rental.WorkflowMySqlIT"
+    }
+  ],
+  "frontend_clean_install": true,
+  "browser_run": true,
+  "java_tests": 92,
+  "passed": true
+}

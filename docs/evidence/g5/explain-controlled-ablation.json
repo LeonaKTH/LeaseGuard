@@ -1,0 +1,44 @@
+[
+  {
+    "case": "user_orders",
+    "actual_projection_plan": "-> Limit: 100 row(s)  (cost=2.91 rows=50) (actual time=1.65..5.22 rows=100 loops=1)\r\n    -> Filter: ((rental_order.deleted = 0) and (rental_order.user_id = 1001))  (cost=2.91 rows=50) (actual time=1.65..5.21 rows=100 loops=1)\r\n        -> Index scan on rental_order using idx_created_time (reverse)  (cost=2.91 rows=519) (actual time=0.263..5.04 rows=1084 loops=1)",
+    "new_indexes_ignored_plan": "-> Limit: 100 row(s)  (cost=0.289 rows=9.99) (actual time=1.39..4.58 rows=100 loops=1)\r\n    -> Filter: ((rental_order.deleted = 0) and (rental_order.user_id = 1001))  (cost=0.289 rows=9.99) (actual time=1.39..4.57 rows=100 loops=1)\r\n        -> Index scan on rental_order using idx_created_time (reverse)  (cost=0.289 rows=519) (actual time=0.336..4.42 rows=1084 loops=1)",
+    "experiment": "paired index availability ablation after V6 on identical data; not an earlier chronological sample"
+  },
+  {
+    "case": "user_renting",
+    "actual_projection_plan": "-> Limit: 100 row(s)  (cost=500 rows=100) (actual time=0.194..0.55 rows=100 loops=1)\r\n    -> Index lookup on rental_order using idx_order_owner_state (user_id=1001, deleted=0, order_status=3) (reverse)  (cost=500 rows=1429) (actual time=0.193..0.537 rows=100 loops=1)",
+    "new_indexes_ignored_plan": "-> Limit: 100 row(s)  (cost=1138 rows=100) (actual time=13.1..13.1 rows=100 loops=1)\r\n    -> Sort: rental_order.created_time DESC, rental_order.id DESC, limit input to 100 row(s) per chunk  (cost=1138 rows=4909) (actual time=13.1..13.1 rows=100 loops=1)\r\n        -> Filter: ((rental_order.order_status = 3) and (rental_order.deleted = 0) and (rental_order.user_id = 1001))  (cost=1138 rows=4909) (actual time=0.255..12 rows=1429 loops=1)\r\n            -> Intersect rows sorted by row ID  (cost=1138 rows=4909) (actual time=0.252..11.5 rows=1429 loops=1)\r\n                -> Index range scan on rental_order using idx_user_id over (user_id = 1001)  (cost=0.00164..31.3 rows=19128) (actual time=0.164..5.13 rows=10000 loops=1)\r\n                -> Index range scan on rental_order using idx_order_status over (order_status = 3)  (cost=715e-6..18.2 rows=25502) (actual time=0.0596..0.774 rows=1430 loops=1)",
+    "experiment": "paired index availability ablation after V6 on identical data; not an earlier chronological sample"
+  },
+  {
+    "case": "admin_orders",
+    "actual_projection_plan": "-> Limit: 100 row(s)  (cost=5521 rows=100) (actual time=0.42..1.16 rows=100 loops=1)\r\n    -> Index lookup on rental_order using idx_order_global_time (deleted=0) (reverse)  (cost=5521 rows=49680) (actual time=0.419..1.14 rows=100 loops=1)",
+    "new_indexes_ignored_plan": "-> Limit: 100 row(s)  (cost=0.0186 rows=10) (actual time=0.264..1.04 rows=100 loops=1)\r\n    -> Filter: (rental_order.deleted = 0)  (cost=0.0186 rows=10) (actual time=0.263..1.03 rows=100 loops=1)\r\n        -> Index scan on rental_order using idx_created_time (reverse)  (cost=0.0186 rows=100) (actual time=0.26..1 rows=100 loops=1)",
+    "experiment": "paired index availability ablation after V6 on identical data; not an earlier chronological sample"
+  },
+  {
+    "case": "admin_renting",
+    "actual_projection_plan": "-> Limit: 100 row(s)  (cost=2.18 rows=49.9) (actual time=0.307..5.44 rows=100 loops=1)\r\n    -> Filter: ((rental_order.order_status = 3) and (rental_order.deleted = 0))  (cost=2.18 rows=49.9) (actual time=0.305..5.42 rows=100 loops=1)\r\n        -> Index scan on rental_order using idx_created_time (reverse)  (cost=2.18 rows=389) (actual time=0.297..5.28 rows=695 loops=1)",
+    "new_indexes_ignored_plan": "-> Limit: 100 row(s)  (cost=0.217 rows=9.98) (actual time=0.329..4.89 rows=100 loops=1)\r\n    -> Filter: ((rental_order.order_status = 3) and (rental_order.deleted = 0))  (cost=0.217 rows=9.98) (actual time=0.327..4.87 rows=100 loops=1)\r\n        -> Index scan on rental_order using idx_created_time (reverse)  (cost=0.217 rows=389) (actual time=0.319..4.7 rows=695 loops=1)",
+    "experiment": "paired index availability ablation after V6 on identical data; not an earlier chronological sample"
+  },
+  {
+    "case": "tech_tickets",
+    "actual_projection_plan": "-> Limit: 100 row(s)  (cost=35.3 rows=100) (actual time=10.1..10.1 rows=100 loops=1)\r\n    -> Sort: maintenance_ticket.created_time DESC, maintenance_ticket.id DESC, limit input to 100 row(s) per chunk  (cost=35.3 rows=1429) (actual time=10.1..10.1 rows=100 loops=1)\r\n        -> Filter: (maintenance_ticket.deleted = 0)  (cost=35.3 rows=1429) (actual time=0.0797..8.07 rows=1429 loops=1)\r\n            -> Index lookup on maintenance_ticket using idx_ticket_assignee (assignee_id=102)  (cost=35.3 rows=1429) (actual time=0.077..7.77 rows=1429 loops=1)",
+    "new_indexes_ignored_plan": "-> Limit: 100 row(s)  (cost=35.3 rows=100) (actual time=11.7..11.8 rows=100 loops=1)\r\n    -> Sort: maintenance_ticket.created_time DESC, maintenance_ticket.id DESC, limit input to 100 row(s) per chunk  (cost=35.3 rows=1429) (actual time=11.7..11.7 rows=100 loops=1)\r\n        -> Filter: (maintenance_ticket.deleted = 0)  (cost=35.3 rows=1429) (actual time=0.0336..8.58 rows=1429 loops=1)\r\n            -> Index lookup on maintenance_ticket using idx_ticket_assignee (assignee_id=102)  (cost=35.3 rows=1429) (actual time=0.0317..8.04 rows=1429 loops=1)",
+    "experiment": "paired index availability ablation after V6 on identical data; not an earlier chronological sample"
+  },
+  {
+    "case": "tech_pending",
+    "actual_projection_plan": "-> Limit: 100 row(s)  (cost=57.3 rows=100) (actual time=4.9..4.97 rows=100 loops=1)\r\n    -> Sort: maintenance_ticket.created_time DESC, maintenance_ticket.id DESC, limit input to 100 row(s) per chunk  (cost=57.3 rows=714) (actual time=4.9..4.95 rows=100 loops=1)\r\n        -> Filter: ((maintenance_ticket.assignee_id = 102) and (maintenance_ticket.deleted = 0))  (cost=57.3 rows=714) (actual time=0.0438..4.15 rows=714 loops=1)\r\n            -> Index lookup on maintenance_ticket using idx_status (status=0)  (cost=57.3 rows=714) (actual time=0.0411..3.88 rows=714 loops=1)",
+    "new_indexes_ignored_plan": "-> Limit: 100 row(s)  (cost=24.6 rows=100) (actual time=2.32..2.36 rows=100 loops=1)\r\n    -> Sort: maintenance_ticket.created_time DESC, maintenance_ticket.id DESC, limit input to 100 row(s) per chunk  (cost=24.6 rows=714) (actual time=2.31..2.35 rows=100 loops=1)\r\n        -> Filter: ((maintenance_ticket.assignee_id = 102) and (maintenance_ticket.deleted = 0))  (cost=24.6 rows=714) (actual time=0.0412..1.98 rows=714 loops=1)\r\n            -> Index lookup on maintenance_ticket using idx_status (status=0)  (cost=24.6 rows=714) (actual time=0.039..1.86 rows=714 loops=1)",
+    "experiment": "paired index availability ablation after V6 on identical data; not an earlier chronological sample"
+  },
+  {
+    "case": "admin_repairs",
+    "actual_projection_plan": "-> Limit: 100 row(s)  (cost=288 rows=100) (actual time=18.4..18.5 rows=100 loops=1)\r\n    -> Sort: maintenance_ticket.created_time DESC, maintenance_ticket.id DESC, limit input to 100 row(s) per chunk  (cost=288 rows=2809) (actual time=18.4..18.4 rows=100 loops=1)\r\n        -> Filter: (maintenance_ticket.deleted = 0)  (cost=288 rows=2809) (actual time=0.0466..6.44 rows=2857 loops=1)\r\n            -> Table scan on maintenance_ticket  (cost=288 rows=2809) (actual time=0.0447..5.84 rows=2857 loops=1)",
+    "new_indexes_ignored_plan": "-> Limit: 100 row(s)  (cost=288 rows=100) (actual time=15.5..15.6 rows=100 loops=1)\r\n    -> Sort: maintenance_ticket.created_time DESC, maintenance_ticket.id DESC, limit input to 100 row(s) per chunk  (cost=288 rows=2809) (actual time=15.5..15.5 rows=100 loops=1)\r\n        -> Filter: (maintenance_ticket.deleted = 0)  (cost=288 rows=2809) (actual time=0.0461..4.58 rows=2857 loops=1)\r\n            -> Table scan on maintenance_ticket  (cost=288 rows=2809) (actual time=0.0441..4.14 rows=2857 loops=1)",
+    "experiment": "paired index availability ablation after V6 on identical data; not an earlier chronological sample"
+  }
+]

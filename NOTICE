@@ -1,0 +1,18 @@
+LeaseGuard
+Copyright 2026 LeaseGuard contributors.
+
+This project is derived from springmeng/Drone-Rental-System,
+fixed source revision 91cf62096c476f15249d7da15bdc1556378778d8.
+Upstream: https://github.com/springmeng/Drone-Rental-System
+The original Apache License 2.0 and existing source notices are retained.
+
+Upstream supplied the rental domain skeleton, entities, controllers/mappers,
+Vue layouts, and basic device/order/qualification/payment/repair functions.
+LeaseGuard changes include compatibility/security migration, return/repair
+acceptance, transaction/idempotency/inventory correctness, reliable tasks,
+technician assignment, typed core pages, verification and measured indexes.
+See UPSTREAM.md and CHANGES_FROM_UPSTREAM.md for boundaries and evidence.
+
+Third-party libraries are declared in Maven/npm manifests and are not bundled
+as binaries in the public source candidate. Unknown-origin upstream images
+and raw private development/browser data are excluded from that candidate.

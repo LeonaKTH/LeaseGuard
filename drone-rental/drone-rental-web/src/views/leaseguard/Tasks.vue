@@ -1,0 +1,11 @@
+<script setup lang="ts">
+import {ref,onMounted} from 'vue'
+import {api} from '../../api/leaseguard'
+import type {Task} from '../../types/leaseguard'
+const rows=ref<Task[]>([]),page=ref(1),total=ref(0),status=ref(''),loading=ref(false),error=ref('')
+const names:Record<string,string>={PENDING:'待执行',CLAIMED:'执行中',DONE:'已处理',FAILED:'最终失败'}
+async function load(){loading.value=true;error.value='';try{const r=await api.tasks(page.value,status.value);rows.value=r.data.records;total.value=r.data.total}catch(e){rows.value=[];error.value=e instanceof Error?e.message:'任务加载失败'}finally{loading.value=false}}
+onMounted(load)
+</script>
+<template><section class="lease-panel" v-loading="loading"><h1>后台任务状态</h1><p>仅查看可靠任务结果。FAILED需先核查原因；本页不直接重置任务或删除幂等回执。</p><el-alert v-if="error" :title="error" type="error" :closable="false"/><label for="task-status">任务状态</label><select id="task-status" v-model="status" @change="page=1;load()"><option value="">全部任务</option><option v-for="(label,key) in names" :key="key" :value="key">{{label}}</option></select><el-button @click="load" :disabled="loading">刷新</el-button><el-empty v-if="!loading&&!error&&!rows.length" description="暂无任务"/><el-table :data="rows" row-key="id"><el-table-column prop="id" label="任务ID"/><el-table-column prop="type" label="类型"/><el-table-column prop="orderId" label="订单ID"/><el-table-column label="状态"><template #default="{row}">{{names[row.status]}}</template></el-table-column><el-table-column label="尝试"><template #default="{row}">{{row.attempts}} / {{row.maxAttempts}}</template></el-table-column><el-table-column prop="lastError" label="失败分类"/><el-table-column label="结果"><template #default="{row}">{{row.result==='CANCELLED'?'已取消':row.result==='NO_ACTION'?'无需取消':'尚无结果'}}</template></el-table-column><el-table-column prop="dueAt" label="到期时间"/><el-table-column prop="updatedAt" label="最后更新"/><el-table-column label="审计"><template #default="{row}"><router-link :to="`/admin/orders/${row.orderId}`">订单与事件</router-link></template></el-table-column></el-table><el-pagination v-model:current-page="page" :total="total" :page-size="20" layout="prev,pager,next" @current-change="load"/></section></template>
+<style scoped>.lease-panel{padding:20px}select{padding:8px;margin:12px}</style>

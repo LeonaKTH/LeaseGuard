@@ -1,0 +1,38 @@
+{
+  "head_scanned": "467ddf7751e689b903d7b18122d17691d5e8f397",
+  "reachable_objects": 1794,
+  "unique_blobs": 1183,
+  "zip_archives": 12,
+  "zip_entries": 3117,
+  "findings": [
+    {
+      "object": "4ba75bec912c07c246ea5d7d9eb35a29a610e75d",
+      "path": "scripts/g2_final/sanitize_traces.py",
+      "private_absolute_path": true
+    },
+    {
+      "object": "a86ec47074ac3f0956c50db5e8fbabbbf7ab493d",
+      "path": "scripts/g5/final_audit.py",
+      "private_absolute_path": true
+    },
+    {
+      "object": "8ec27e9bc4614a18ef4f1390eae97f16468e3d38",
+      "path": "scripts/g5/history_audit.py",
+      "private_absolute_path": true
+    },
+    {
+      "object": "bc15daecbd9e480b3066271c854d4ea122670a0e",
+      "path": "scripts/g5/sanitize_evidence.py",
+      "private_absolute_path": true
+    },
+    {
+      "object": "753c0e47dbd22a6e442d976d722f5513a3c1444d",
+      "path": "scripts/g5/history_audit.py",
+      "private_absolute_path": true
+    }
+  ],
+  "known_secrets_and_jwt_passed": true,
+  "private_paths_found": 5,
+  "scan_time": "2026-11-06T02:52:09+0800",
+  "development_history_must_not_be_published": true
+}

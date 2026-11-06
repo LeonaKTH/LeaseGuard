@@ -1,0 +1,98 @@
+[
+  {
+    "case": "deep_page",
+    "path": "/admin/order/list?page=1000&pageSize=100",
+    "samples_after_two_warmups": [
+      {
+        "http_ms": 706.2678,
+        "jdbc_ms": 666.3068,
+        "assembly_ms": 15.0036,
+        "sql_count": 6,
+        "pool_waiting": 0,
+        "checkout_ms": 0.0708
+      },
+      {
+        "http_ms": 769.9343,
+        "jdbc_ms": 726.6179,
+        "assembly_ms": 14.7234,
+        "sql_count": 6,
+        "pool_waiting": 0,
+        "checkout_ms": 0.0795
+      },
+      {
+        "http_ms": 772.2333,
+        "jdbc_ms": 719.115,
+        "assembly_ms": 14.42,
+        "sql_count": 6,
+        "pool_waiting": 0,
+        "checkout_ms": 0.0701
+      },
+      {
+        "http_ms": 739.622,
+        "jdbc_ms": 697.3582,
+        "assembly_ms": 15.2945,
+        "sql_count": 6,
+        "pool_waiting": 0,
+        "checkout_ms": 0.0742
+      },
+      {
+        "http_ms": 755.5761,
+        "jdbc_ms": 715.9684,
+        "assembly_ms": 15.1537,
+        "sql_count": 6,
+        "pool_waiting": 0,
+        "checkout_ms": 0.0849
+      }
+    ],
+    "explain": "-> Limit/Offset: 100/99900 row(s)  (cost=5541 rows=0) (actual time=681..681 rows=100 loops=1)\r\n    -> Index lookup on rental_order using idx_order_global_time (deleted=0) (reverse)  (cost=5541 rows=49880) (actual time=0.146..670 rows=100000 loops=1)",
+    "oracle_passed": true
+  },
+  {
+    "case": "substring",
+    "path": "/admin/order/list?pageSize=100&orderNo=SYNTHETIC_G5_00001",
+    "samples_after_two_warmups": [
+      {
+        "http_ms": 665.7981,
+        "jdbc_ms": 630.4391,
+        "assembly_ms": 12.9599,
+        "sql_count": 6,
+        "pool_waiting": 0,
+        "checkout_ms": 0.0787
+      },
+      {
+        "http_ms": 664.316,
+        "jdbc_ms": 616.0484,
+        "assembly_ms": 12.8206,
+        "sql_count": 6,
+        "pool_waiting": 0,
+        "checkout_ms": 0.0736
+      },
+      {
+        "http_ms": 669.8858,
+        "jdbc_ms": 618.3705,
+        "assembly_ms": 11.7686,
+        "sql_count": 6,
+        "pool_waiting": 0,
+        "checkout_ms": 0.0751
+      },
+      {
+        "http_ms": 676.2359,
+        "jdbc_ms": 644.0175,
+        "assembly_ms": 14.6174,
+        "sql_count": 6,
+        "pool_waiting": 0,
+        "checkout_ms": 0.0794
+      },
+      {
+        "http_ms": 654.7023,
+        "jdbc_ms": 621.5501,
+        "assembly_ms": 12.1438,
+        "sql_count": 6,
+        "pool_waiting": 0,
+        "checkout_ms": 0.1918
+      }
+    ],
+    "explain": "-> Limit: 100 row(s)  (cost=1107 rows=100) (actual time=3.27..44.1 rows=100 loops=1)\r\n    -> Filter: (rental_order.order_no like '%SYNTHETIC_G5_00001%')  (cost=1107 rows=5542) (actual time=3.27..44 rows=100 loops=1)\r\n        -> Index lookup on rental_order using idx_order_global_time (deleted=0) (reverse)  (cost=1107 rows=49880) (actual time=0.139..37.5 rows=9703 loops=1)",
+    "oracle_passed": true
+  }
+]

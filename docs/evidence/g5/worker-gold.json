@@ -1,0 +1,12 @@
+{
+  "orders": 400,
+  "done_cancelled": 400,
+  "held_final": 0,
+  "single_release_each": true,
+  "capacity": 450,
+  "stock_final": 450,
+  "system_actor_non_login": true,
+  "event_command_actor_equal": true,
+  "pending_backlog_final": 0,
+  "gold_passed": true
+}

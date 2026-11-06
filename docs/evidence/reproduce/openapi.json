@@ -1,0 +1,6548 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "LeaseGuard",
+    "version": "G4"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:18084/api",
+      "description": "Generated server url"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "维修工作台",
+      "description": "ADMIN可读全部，TECHNICIAN只读本人派工；开始/提交仅被分配技师"
+    },
+    {
+      "name": "派工与任务管理",
+      "description": "ADMIN专用；任务只读，不提供FAILED重试"
+    }
+  ],
+  "paths": {
+    "/user/password": {
+      "put": {
+        "tags": [
+          "用户管理-用户端"
+        ],
+        "summary": "修改密码",
+        "operationId": "updatePassword",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordChangeDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/info": {
+      "get": {
+        "tags": [
+          "用户管理-用户端"
+        ],
+        "summary": "获取当前用户信息",
+        "operationId": "getCurrentUserInfo",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultUserVO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "用户管理-用户端"
+        ],
+        "summary": "更新用户信息",
+        "operationId": "updateUserInfo",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserUpdateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/user/{userId}/status": {
+      "put": {
+        "tags": [
+          "用户管理-管理员端"
+        ],
+        "summary": "启用/禁用用户",
+        "operationId": "updateUserStatus",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "状态: 0-禁用, 1-正常",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/user/{userId}/reset-password": {
+      "put": {
+        "tags": [
+          "用户管理-管理员端"
+        ],
+        "summary": "重置用户密码",
+        "operationId": "resetPassword",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordResetDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/user/{userId}/credit": {
+      "put": {
+        "tags": [
+          "用户管理-管理员端"
+        ],
+        "summary": "更新用户诚信状态",
+        "operationId": "updateCreditStatus",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "creditStatus",
+            "in": "query",
+            "description": "诚信状态: 0-不良, 1-正常",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "description": "变更原因",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/user/qualification/{id}/audit": {
+      "put": {
+        "tags": [
+          "用户管理-管理员端"
+        ],
+        "summary": "审核飞行资质",
+        "operationId": "auditQualification",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuditDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/maintenance/ticket/{id}": {
+      "get": {
+        "tags": [
+          "设备维护-管理员端"
+        ],
+        "summary": "获取维修工单详情",
+        "operationId": "getTicketDetail",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultMaintenanceTicketVO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "设备维护-管理员端"
+        ],
+        "summary": "更新维修工单",
+        "operationId": "updateMaintenanceTicket",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaintenanceTicketDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/maintenance/fault/{id}/audit": {
+      "put": {
+        "tags": [
+          "设备维护-管理员端"
+        ],
+        "summary": "审核故障上报（确认故障将自动生成维修工单）",
+        "operationId": "auditFaultReport",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuditDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/drone/{id}": {
+      "get": {
+        "tags": [
+          "无人机管理-管理员端"
+        ],
+        "summary": "获取无人机详情",
+        "operationId": "getDroneDetail",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultDrone"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "无人机管理-管理员端"
+        ],
+        "summary": "更新无人机",
+        "operationId": "updateDrone",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DroneDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "无人机管理-管理员端"
+        ],
+        "summary": "删除无人机",
+        "operationId": "deleteDrone",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/drone/{id}/stock": {
+      "put": {
+        "tags": [
+          "无人机管理-管理员端"
+        ],
+        "summary": "更新无人机库存",
+        "operationId": "updateStock",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "description": "新库存数量"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/drone/{id}/status": {
+      "put": {
+        "tags": [
+          "无人机管理-管理员端"
+        ],
+        "summary": "更新无人机状态",
+        "operationId": "updateStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "状态: 0-缺货, 1-在售, 2-维护中",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/drone/{id}/shelf": {
+      "put": {
+        "tags": [
+          "无人机管理-管理员端"
+        ],
+        "summary": "上架/下架无人机",
+        "operationId": "updateOnShelf",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "onShelf",
+            "in": "query",
+            "description": "上架状态: 0-下架, 1-上架",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/comment/{id}/status": {
+      "put": {
+        "tags": [
+          "评论管理-管理员端"
+        ],
+        "summary": "屏蔽/恢复评论",
+        "operationId": "updateCommentStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "状态: 0-屏蔽, 1-正常",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/airspace/{id}/audit": {
+      "put": {
+        "tags": [
+          "空域备案-管理员端"
+        ],
+        "summary": "审核空域备案",
+        "operationId": "auditAirspaceRecord",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuditDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workbench/tickets/{id}/start": {
+      "post": {
+        "tags": [
+          "维修工作台"
+        ],
+        "summary": "分配技师开始维修，支持Idempotency-Key",
+        "operationId": "start",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workbench/tickets/{id}/complete": {
+      "post": {
+        "tags": [
+          "维修工作台"
+        ],
+        "summary": "分配技师提交待验收，金额由BigDecimal处理",
+        "operationId": "complete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaintenanceTicketDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/qualification": {
+      "get": {
+        "tags": [
+          "用户管理-用户端"
+        ],
+        "summary": "获取当前用户的飞行资质",
+        "operationId": "getCurrentUserQualification",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultUserQualification"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "用户管理-用户端"
+        ],
+        "summary": "提交飞行资质",
+        "operationId": "submitQualification",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QualificationDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/order/{orderId}/return": {
+      "get": {
+        "tags": [
+          "订单管理-用户端"
+        ],
+        "operationId": "returnStatus",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultReturnRequest"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "订单管理-用户端"
+        ],
+        "summary": "申请退租",
+        "operationId": "applyReturn",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/order/{orderId}/receive": {
+      "post": {
+        "tags": [
+          "订单管理-用户端"
+        ],
+        "summary": "确认收货",
+        "operationId": "confirmReceive",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/order/{orderId}/pay": {
+      "post": {
+        "tags": [
+          "订单管理-用户端"
+        ],
+        "summary": "模拟支付",
+        "operationId": "simulatePay",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/order/{orderId}/cancel": {
+      "post": {
+        "tags": [
+          "订单管理-用户端"
+        ],
+        "summary": "取消订单",
+        "operationId": "cancelOrder",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "description": "取消原因",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/order/create": {
+      "post": {
+        "tags": [
+          "订单管理-用户端"
+        ],
+        "summary": "创建订单",
+        "operationId": "createOrder",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderCreateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultOrderVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fault/report": {
+      "post": {
+        "tags": [
+          "故障上报-用户端"
+        ],
+        "summary": "上报故障",
+        "operationId": "reportFault",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FaultReportDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comment/add": {
+      "post": {
+        "tags": [
+          "评论管理-用户端"
+        ],
+        "summary": "发表评论",
+        "operationId": "addComment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "认证管理"
+        ],
+        "summary": "用户注册",
+        "operationId": "register",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "tags": [
+          "认证管理"
+        ],
+        "summary": "退出登录",
+        "operationId": "logout",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "认证管理"
+        ],
+        "summary": "用户登录",
+        "operationId": "login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultLoginVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/admin/login": {
+      "post": {
+        "tags": [
+          "认证管理"
+        ],
+        "summary": "管理员登录",
+        "operationId": "adminLogin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultLoginVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/airspace/submit": {
+      "post": {
+        "tags": [
+          "空域备案-用户端"
+        ],
+        "summary": "提交空域备案",
+        "operationId": "submitAirspaceRecord",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AirspaceRecordDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/technicians": {
+      "get": {
+        "tags": [
+          "派工与任务管理"
+        ],
+        "summary": "启用的真实技师目录",
+        "operationId": "technicians",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultListTechnician"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "派工与任务管理"
+        ],
+        "summary": "管理员建立BCrypt技师账号，不接受客户端角色",
+        "operationId": "create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TechnicianCreateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultTechnician"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/order/{orderId}/ship": {
+      "post": {
+        "tags": [
+          "订单管理-管理员端"
+        ],
+        "summary": "发货",
+        "operationId": "shipOrder",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "expressCompany",
+            "in": "query",
+            "description": "快递公司",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "expressNo",
+            "in": "query",
+            "description": "快递单号",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/order/{orderId}/return": {
+      "post": {
+        "tags": [
+          "订单管理-管理员端"
+        ],
+        "summary": "确认归还",
+        "operationId": "confirmReturn",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/order/{orderId}/return-review": {
+      "post": {
+        "tags": [
+          "订单管理-管理员端"
+        ],
+        "operationId": "review",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReturnReviewDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/order/{orderId}/refund": {
+      "post": {
+        "tags": [
+          "订单管理-管理员端"
+        ],
+        "summary": "退款",
+        "operationId": "refundOrder",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "description": "退款原因",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/maintenance/ticket/{id}/start": {
+      "post": {
+        "tags": [
+          "设备维护-管理员端"
+        ],
+        "summary": "开始维修",
+        "operationId": "startMaintenance",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/maintenance/ticket/{id}/complete": {
+      "post": {
+        "tags": [
+          "设备维护-管理员端"
+        ],
+        "summary": "完成维修",
+        "operationId": "completeMaintenance",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaintenanceTicketDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/maintenance/ticket/{id}/assignment": {
+      "post": {
+        "tags": [
+          "派工与任务管理"
+        ],
+        "summary": "仅PENDING派工；必须当前version，冲突409",
+        "operationId": "assign",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignmentDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/maintenance/ticket/{id}/accept": {
+      "post": {
+        "tags": [
+          "设备维护-管理员端"
+        ],
+        "operationId": "accept",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcceptanceDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/drone/add": {
+      "post": {
+        "tags": [
+          "无人机管理-管理员端"
+        ],
+        "summary": "添加无人机",
+        "operationId": "addDrone",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DroneDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/comment/{id}/reply": {
+      "post": {
+        "tags": [
+          "评论管理-管理员端"
+        ],
+        "summary": "回复评论",
+        "operationId": "replyComment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "description": "回复内容"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workbench/tickets": {
+      "get": {
+        "tags": [
+          "维修工作台"
+        ],
+        "summary": "数据库范围过滤的工作台分页，ID与金额为字符串",
+        "operationId": "list",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultPageTicketView"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workbench/tickets/{id}": {
+      "get": {
+        "tags": [
+          "维修工作台"
+        ],
+        "summary": "仅管理员或分配技师的工单详情",
+        "operationId": "detail",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultTicketView"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/orders": {
+      "get": {
+        "tags": [
+          "用户管理-用户端"
+        ],
+        "summary": "获取当前用户订单列表",
+        "operationId": "getCurrentUserOrders",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "orderStatus",
+            "in": "query",
+            "description": "订单状态",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultIPageOrderVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/order/{orderId}": {
+      "get": {
+        "tags": [
+          "订单管理-用户端"
+        ],
+        "summary": "获取订单详情",
+        "operationId": "getOrderDetail",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultOrderVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fault/{id}": {
+      "get": {
+        "tags": [
+          "故障上报-用户端"
+        ],
+        "summary": "获取故障上报详情",
+        "operationId": "getFaultReportDetail",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultFaultReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fault/{faultReportId}/maintenance": {
+      "get": {
+        "tags": [
+          "故障上报-用户端"
+        ],
+        "summary": "查看维修进度",
+        "operationId": "getMaintenanceProgress",
+        "parameters": [
+          {
+            "name": "faultReportId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultMaintenanceTicket"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fault/order/{orderId}": {
+      "get": {
+        "tags": [
+          "故障上报-用户端"
+        ],
+        "summary": "根据订单ID获取故障报修列表",
+        "operationId": "getFaultReportsByOrderId",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultListFaultReportVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fault/my": {
+      "get": {
+        "tags": [
+          "故障上报-用户端"
+        ],
+        "summary": "获取当前用户的故障上报列表",
+        "operationId": "getCurrentUserFaultReports",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultIPageFaultReportVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/drone/{droneId}/comments": {
+      "get": {
+        "tags": [
+          "无人机管理-用户端"
+        ],
+        "summary": "获取无人机评论列表",
+        "operationId": "getDroneComments",
+        "parameters": [
+          {
+            "name": "droneId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultIPageComment"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/drone/types": {
+      "get": {
+        "tags": [
+          "无人机管理-用户端"
+        ],
+        "summary": "获取无人机类型列表",
+        "operationId": "getDroneTypes",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultListString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/drone/list": {
+      "get": {
+        "tags": [
+          "无人机管理-用户端"
+        ],
+        "summary": "分页查询可租赁无人机列表",
+        "operationId": "listAvailableDrones",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "页码",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "description": "关键词",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "brand",
+            "in": "query",
+            "description": "品牌",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "类型",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "状态:1-可租赁,0-缺货",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "minPrice",
+            "in": "query",
+            "description": "最低价格",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "maxPrice",
+            "in": "query",
+            "description": "最高价格",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "排序字段",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "createdTime"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "排序方向",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "desc"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultIPageDrone"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/drone/detail/{id}": {
+      "get": {
+        "tags": [
+          "无人机管理-用户端"
+        ],
+        "summary": "获取无人机详情",
+        "operationId": "getDroneDetail_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultDrone"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/drone/brands": {
+      "get": {
+        "tags": [
+          "无人机管理-用户端"
+        ],
+        "summary": "获取无人机品牌列表",
+        "operationId": "getDroneBrands",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultListString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comment/my": {
+      "get": {
+        "tags": [
+          "评论管理-用户端"
+        ],
+        "summary": "获取当前用户的评论列表",
+        "operationId": "getCurrentUserComments",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultIPageComment"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/audit/{kind}/{id}": {
+      "get": {
+        "tags": [
+          "派工与任务管理"
+        ],
+        "summary": "授权订单或工单事件，kind=orders|tickets，最多100",
+        "operationId": "events",
+        "parameters": [
+          {
+            "name": "kind",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultPageEvent"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/airspace/list": {
+      "get": {
+        "tags": [
+          "空域备案-用户端"
+        ],
+        "summary": "获取当前用户的空域备案列表",
+        "operationId": "getCurrentUserAirspaceRecords",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultListAirspaceRecord"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/airspace/approved": {
+      "get": {
+        "tags": [
+          "空域备案-用户端"
+        ],
+        "summary": "获取当前用户已通过审核的空域备案",
+        "operationId": "getCurrentUserApprovedRecords",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultListAirspaceRecord"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/user/{userId}": {
+      "get": {
+        "tags": [
+          "用户管理-管理员端"
+        ],
+        "summary": "获取用户详情",
+        "operationId": "getUserDetail",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultUserVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/user/{userId}/credit-records": {
+      "get": {
+        "tags": [
+          "用户管理-管理员端"
+        ],
+        "summary": "获取用户诚信记录",
+        "operationId": "getCreditRecords",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultListCreditRecord"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/user/qualification/{id}": {
+      "get": {
+        "tags": [
+          "用户管理-管理员端"
+        ],
+        "summary": "获取飞行资质详情",
+        "operationId": "getQualificationDetail",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultUserQualification"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/user/qualification/stats": {
+      "get": {
+        "tags": [
+          "用户管理-管理员端"
+        ],
+        "summary": "获取资质审核统计",
+        "operationId": "getQualificationStats",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/user/qualification/list": {
+      "get": {
+        "tags": [
+          "用户管理-管理员端"
+        ],
+        "summary": "分页查询飞行资质列表",
+        "operationId": "pageQualifications",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "auditStatus",
+            "in": "query",
+            "description": "审核状态",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultIPageUserQualificationVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/user/list": {
+      "get": {
+        "tags": [
+          "用户管理-管理员端"
+        ],
+        "summary": "分页查询用户列表",
+        "operationId": "pageUsers",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "页码",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "description": "关键词(昵称/手机号)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "状态",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultIPageUserVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/tasks": {
+      "get": {
+        "tags": [
+          "派工与任务管理"
+        ],
+        "summary": "管理员只读任务分页，排除租约token和内部请求",
+        "operationId": "tasks",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultPageTask"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/order/{orderId}": {
+      "get": {
+        "tags": [
+          "订单管理-管理员端"
+        ],
+        "summary": "获取订单详情",
+        "operationId": "getOrderDetail_1",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultOrderVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/order/list": {
+      "get": {
+        "tags": [
+          "订单管理-管理员端"
+        ],
+        "summary": "分页查询订单列表",
+        "operationId": "pageOrders",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "页码",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "orderNo",
+            "in": "query",
+            "description": "订单编号",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userPhone",
+            "in": "query",
+            "description": "用户手机",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "orderStatus",
+            "in": "query",
+            "description": "订单状态",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "开始日期",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "结束日期",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultIPageOrderVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/maintenance/ticket/list": {
+      "get": {
+        "tags": [
+          "设备维护-管理员端"
+        ],
+        "summary": "分页查询维修工单列表",
+        "operationId": "pageMaintenanceTickets",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "页码",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "状态",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "droneId",
+            "in": "query",
+            "description": "无人机ID",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "droneModel",
+            "in": "query",
+            "description": "设备型号",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "维修类型",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultIPageMaintenanceTicketVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/maintenance/fault/{id}": {
+      "get": {
+        "tags": [
+          "设备维护-管理员端"
+        ],
+        "summary": "获取故障上报详情",
+        "operationId": "getFaultReportDetail_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultFaultReportVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/maintenance/fault/list": {
+      "get": {
+        "tags": [
+          "设备维护-管理员端"
+        ],
+        "summary": "分页查询故障上报列表",
+        "operationId": "pageFaultReports",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "auditStatus",
+            "in": "query",
+            "description": "审核状态",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultIPageFaultReportVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/drone/list": {
+      "get": {
+        "tags": [
+          "无人机管理-管理员端"
+        ],
+        "summary": "分页查询无人机列表",
+        "operationId": "pageAllDrones",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "页码",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "description": "关键词(型号/品牌)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "类型",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "状态",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "onShelf",
+            "in": "query",
+            "description": "上架状态",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultIPageDrone"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/dashboard/todos": {
+      "get": {
+        "tags": [
+          "管理后台-控制台"
+        ],
+        "summary": "获取待办事项统计",
+        "operationId": "getTodos",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultMapStringObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/dashboard/stats": {
+      "get": {
+        "tags": [
+          "管理后台-控制台"
+        ],
+        "summary": "获取统计数据",
+        "operationId": "getStats",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultMapStringObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/dashboard/revenue-trend": {
+      "get": {
+        "tags": [
+          "管理后台-控制台"
+        ],
+        "summary": "获取收入趋势",
+        "operationId": "getRevenueTrend",
+        "parameters": [
+          {
+            "name": "period",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "week"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultMapStringObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/dashboard/recent-orders": {
+      "get": {
+        "tags": [
+          "管理后台-控制台"
+        ],
+        "summary": "获取最新订单",
+        "operationId": "getRecentOrders",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 5
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultListMapStringObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/dashboard/popular-drones": {
+      "get": {
+        "tags": [
+          "管理后台-控制台"
+        ],
+        "summary": "获取热门设备",
+        "operationId": "getPopularDrones",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 5
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultListMapStringObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/dashboard/order-trend": {
+      "get": {
+        "tags": [
+          "管理后台-控制台"
+        ],
+        "summary": "获取订单趋势",
+        "operationId": "getOrderTrend",
+        "parameters": [
+          {
+            "name": "period",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "week"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultMapStringObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/comment/list": {
+      "get": {
+        "tags": [
+          "评论管理-管理员端"
+        ],
+        "summary": "分页查询评论列表",
+        "operationId": "pageComments",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "页码",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "droneId",
+            "in": "query",
+            "description": "无人机ID",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "状态",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "description": "用户昵称",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "droneModel",
+            "in": "query",
+            "description": "设备型号",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rating",
+            "in": "query",
+            "description": "评分",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "hasReply",
+            "in": "query",
+            "description": "是否已回复",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultIPageCommentVO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/airspace/{id}": {
+      "get": {
+        "tags": [
+          "空域备案-管理员端"
+        ],
+        "summary": "获取空域备案详情",
+        "operationId": "getAirspaceRecordDetail",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultAirspaceRecord"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/airspace/list": {
+      "get": {
+        "tags": [
+          "空域备案-管理员端"
+        ],
+        "summary": "分页查询空域备案列表",
+        "operationId": "pageAirspaceRecords",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "auditStatus",
+            "in": "query",
+            "description": "审核状态",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "regionName",
+            "in": "query",
+            "description": "区域名称",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultIPageAirspaceRecord"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comment/{id}": {
+      "delete": {
+        "tags": [
+          "评论管理-用户端"
+        ],
+        "summary": "删除评论",
+        "operationId": "deleteComment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/comment/{id}": {
+      "delete": {
+        "tags": [
+          "评论管理-管理员端"
+        ],
+        "summary": "删除评论",
+        "operationId": "deleteComment_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PasswordChangeDTO": {
+        "type": "object",
+        "properties": {
+          "oldPassword": {
+            "type": "string",
+            "minLength": 1
+          },
+          "newPassword": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 12
+          }
+        },
+        "required": [
+          "newPassword",
+          "oldPassword"
+        ]
+      },
+      "ResultVoid": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {},
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "UserUpdateDTO": {
+        "type": "object",
+        "description": "用户信息更新参数",
+        "properties": {
+          "nickname": {
+            "type": "string",
+            "description": "昵称"
+          },
+          "phone": {
+            "type": "string",
+            "description": "手机号",
+            "pattern": "^1[3-9]\\d{9}$"
+          },
+          "email": {
+            "type": "string",
+            "description": "邮箱"
+          },
+          "avatar": {
+            "type": "string",
+            "description": "头像URL"
+          },
+          "address": {
+            "type": "string",
+            "description": "住址"
+          }
+        }
+      },
+      "PasswordResetDTO": {
+        "type": "object",
+        "properties": {
+          "newPassword": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 12
+          }
+        },
+        "required": [
+          "newPassword"
+        ]
+      },
+      "AuditDTO": {
+        "type": "object",
+        "description": "审核参数",
+        "properties": {
+          "auditStatus": {
+            "type": "integer",
+            "format": "int32",
+            "description": "审核状态: 1-通过, 2-拒绝"
+          },
+          "auditRemark": {
+            "type": "string",
+            "description": "审核备注"
+          }
+        },
+        "required": [
+          "auditStatus"
+        ]
+      },
+      "MaintenanceTicketDTO": {
+        "type": "object",
+        "description": "维修工单参数",
+        "properties": {
+          "maintenanceType": {
+            "type": "string",
+            "description": "维修类型"
+          },
+          "maintenanceDescription": {
+            "type": "string",
+            "description": "维修描述"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "description": "状态: 0-待维修, 1-维修中, 2-已完成, 4-待验收（禁止通用接口修改）"
+          },
+          "estimatedCost": {
+            "type": "number",
+            "description": "预估费用",
+            "minimum": 0.0
+          },
+          "actualCost": {
+            "type": "number",
+            "description": "实际费用",
+            "minimum": 0.0
+          },
+          "estimatedDays": {
+            "type": "integer",
+            "format": "int32",
+            "description": "预估维修天数"
+          },
+          "actualDays": {
+            "type": "integer",
+            "format": "int32",
+            "description": "实际维修天数"
+          },
+          "assigneeName": {
+            "type": "string",
+            "description": "维修负责人"
+          },
+          "progressNote": {
+            "type": "string",
+            "description": "进度备注"
+          }
+        }
+      },
+      "DroneDTO": {
+        "type": "object",
+        "description": "无人机参数",
+        "properties": {
+          "model": {
+            "type": "string",
+            "description": "型号名称",
+            "minLength": 1
+          },
+          "brand": {
+            "type": "string",
+            "description": "品牌"
+          },
+          "type": {
+            "type": "string",
+            "description": "类型: 航拍/测绘/农业/巡检"
+          },
+          "description": {
+            "type": "string",
+            "description": "描述信息"
+          },
+          "image": {
+            "type": "string",
+            "description": "图片URL"
+          },
+          "pricePerDay": {
+            "type": "number",
+            "description": "每日租赁价格(元)",
+            "minimum": 0.01
+          },
+          "stock": {
+            "type": "integer",
+            "format": "int32",
+            "description": "库存数量",
+            "minimum": 0
+          },
+          "flightTime": {
+            "type": "integer",
+            "format": "int32",
+            "description": "续航时间(分钟)"
+          },
+          "maxPayload": {
+            "type": "number",
+            "description": "最大载重(kg)"
+          },
+          "maxSpeed": {
+            "type": "number",
+            "description": "最大速度(km/h)"
+          },
+          "maxRange": {
+            "type": "number",
+            "description": "最大航程(km)"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "description": "状态: 0-缺货, 1-在售, 2-维护中"
+          },
+          "onShelf": {
+            "type": "integer",
+            "format": "int32",
+            "description": "上架状态: 0-下架, 1-上架"
+          }
+        },
+        "required": [
+          "model",
+          "pricePerDay",
+          "stock"
+        ]
+      },
+      "QualificationDTO": {
+        "type": "object",
+        "description": "飞行资质提交参数",
+        "properties": {
+          "certificateNo": {
+            "type": "string",
+            "description": "证件号码",
+            "minLength": 1
+          },
+          "certificateType": {
+            "type": "string",
+            "description": "证件类型"
+          },
+          "certificateImage": {
+            "type": "string",
+            "description": "证件图片URL"
+          },
+          "validStartDate": {
+            "type": "string",
+            "format": "date",
+            "description": "有效期开始日期"
+          },
+          "validEndDate": {
+            "type": "string",
+            "format": "date",
+            "description": "有效期结束日期"
+          }
+        },
+        "required": [
+          "certificateNo",
+          "validEndDate",
+          "validStartDate"
+        ]
+      },
+      "OrderCreateDTO": {
+        "type": "object",
+        "description": "订单创建参数",
+        "properties": {
+          "droneId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "无人机ID"
+          },
+          "airspaceRecordId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "空域备案ID"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date",
+            "description": "租赁开始日期"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date",
+            "description": "租赁结束日期"
+          },
+          "deliveryAddress": {
+            "type": "string",
+            "description": "收货地址"
+          },
+          "remark": {
+            "type": "string",
+            "description": "订单备注"
+          }
+        },
+        "required": [
+          "droneId",
+          "endDate",
+          "startDate"
+        ]
+      },
+      "OrderVO": {
+        "type": "object",
+        "description": "订单信息",
+        "properties": {
+          "returnRequest": {
+            "$ref": "#/components/schemas/ReturnRequest"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "订单ID"
+          },
+          "orderNo": {
+            "type": "string",
+            "description": "订单编号"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "用户ID"
+          },
+          "username": {
+            "type": "string",
+            "description": "用户名"
+          },
+          "droneId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "无人机ID"
+          },
+          "droneModel": {
+            "type": "string",
+            "description": "无人机型号"
+          },
+          "droneImage": {
+            "type": "string",
+            "description": "无人机图片"
+          },
+          "airspaceRecordId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "空域备案ID"
+          },
+          "regionName": {
+            "type": "string",
+            "description": "飞行区域名称"
+          },
+          "rentalStartTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "租赁开始时间"
+          },
+          "rentalEndTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "租赁结束时间"
+          },
+          "rentalDays": {
+            "type": "integer",
+            "format": "int32",
+            "description": "租赁天数"
+          },
+          "unitPrice": {
+            "type": "number",
+            "description": "单价(元/天)"
+          },
+          "totalAmount": {
+            "type": "number",
+            "description": "订单总金额"
+          },
+          "depositAmount": {
+            "type": "number",
+            "description": "押金金额"
+          },
+          "orderStatus": {
+            "type": "integer",
+            "format": "int32",
+            "description": "订单状态: 0-待结算, 1-待交付, 2-待接收, 3-租赁中, 4-已归还, 5-已取消, 6-已退款"
+          },
+          "orderStatusDesc": {
+            "type": "string",
+            "description": "订单状态描述"
+          },
+          "deliveryAddress": {
+            "type": "string",
+            "description": "收货地址"
+          },
+          "remark": {
+            "type": "string",
+            "description": "订单备注"
+          },
+          "createdTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          }
+        }
+      },
+      "ResultOrderVO": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/OrderVO"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ReturnRequest": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orderId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "submittedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reviewedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reviewerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "reviewRemark": {
+            "type": "string"
+          }
+        }
+      },
+      "FaultReportDTO": {
+        "type": "object",
+        "description": "故障上报参数",
+        "properties": {
+          "droneId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "无人机ID"
+          },
+          "orderId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "关联订单ID"
+          },
+          "faultType": {
+            "type": "string",
+            "description": "故障类型"
+          },
+          "faultDescription": {
+            "type": "string",
+            "description": "故障描述",
+            "minLength": 1
+          },
+          "faultImages": {
+            "type": "string",
+            "description": "故障图片(JSON数组)"
+          },
+          "faultTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "故障发生时间"
+          }
+        },
+        "required": [
+          "droneId",
+          "faultDescription"
+        ]
+      },
+      "CommentDTO": {
+        "type": "object",
+        "description": "评论参数",
+        "properties": {
+          "droneId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "无人机ID"
+          },
+          "orderId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "订单ID"
+          },
+          "content": {
+            "type": "string",
+            "description": "评论内容",
+            "minLength": 1
+          },
+          "rating": {
+            "type": "integer",
+            "format": "int32",
+            "description": "评分: 1-5星",
+            "maximum": 5,
+            "minimum": 1
+          },
+          "images": {
+            "type": "string",
+            "description": "评论图片(JSON数组)"
+          }
+        },
+        "required": [
+          "content",
+          "droneId"
+        ]
+      },
+      "RegisterDTO": {
+        "type": "object",
+        "description": "注册请求参数",
+        "properties": {
+          "username": {
+            "type": "string",
+            "description": "用户名",
+            "maxLength": 20,
+            "minLength": 4
+          },
+          "password": {
+            "type": "string",
+            "description": "密码",
+            "maxLength": 64,
+            "minLength": 12
+          },
+          "nickname": {
+            "type": "string",
+            "description": "昵称"
+          },
+          "phone": {
+            "type": "string",
+            "description": "手机号",
+            "pattern": "^1[3-9]\\d{9}$"
+          },
+          "email": {
+            "type": "string",
+            "description": "邮箱"
+          }
+        },
+        "required": [
+          "password",
+          "username"
+        ]
+      },
+      "LoginDTO": {
+        "type": "object",
+        "description": "登录请求参数",
+        "properties": {
+          "username": {
+            "type": "string",
+            "description": "用户名",
+            "minLength": 1
+          },
+          "password": {
+            "type": "string",
+            "description": "密码",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "password",
+          "username"
+        ]
+      },
+      "LoginVO": {
+        "type": "object",
+        "description": "登录返回信息",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "用户ID"
+          },
+          "username": {
+            "type": "string",
+            "description": "用户名"
+          },
+          "nickname": {
+            "type": "string",
+            "description": "昵称"
+          },
+          "role": {
+            "type": "integer",
+            "format": "int32",
+            "description": "角色: 0-普通用户, 1-管理员"
+          },
+          "token": {
+            "type": "string",
+            "description": "Token"
+          }
+        }
+      },
+      "ResultLoginVO": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/LoginVO"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "AirspaceRecordDTO": {
+        "type": "object",
+        "description": "空域备案参数",
+        "properties": {
+          "regionName": {
+            "type": "string",
+            "description": "飞行区域名称",
+            "minLength": 1
+          },
+          "regionAddress": {
+            "type": "string",
+            "description": "飞行区域详细地址"
+          },
+          "longitude": {
+            "type": "number",
+            "description": "经度"
+          },
+          "latitude": {
+            "type": "number",
+            "description": "纬度"
+          },
+          "radius": {
+            "type": "integer",
+            "format": "int32",
+            "description": "飞行半径(米)"
+          },
+          "maxAltitude": {
+            "type": "integer",
+            "format": "int32",
+            "description": "最大飞行高度(米)"
+          },
+          "plannedStartTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "计划开始时间"
+          },
+          "plannedEndTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "计划结束时间"
+          },
+          "purpose": {
+            "type": "string",
+            "description": "飞行用途"
+          }
+        },
+        "required": [
+          "regionName"
+        ]
+      },
+      "TechnicianCreateDTO": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[A-Za-z0-9_]{4,20}"
+          },
+          "password": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 12,
+            "writeOnly": true
+          }
+        },
+        "required": [
+          "password",
+          "username"
+        ]
+      },
+      "ResultTechnician": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Technician"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Technician": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "nickname": {
+            "type": "string"
+          }
+        }
+      },
+      "ReturnReviewDTO": {
+        "type": "object",
+        "properties": {
+          "approved": {
+            "type": "boolean"
+          },
+          "remark": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 0
+          }
+        },
+        "required": [
+          "approved"
+        ]
+      },
+      "AssignmentDTO": {
+        "type": "object",
+        "properties": {
+          "assigneeId": {
+            "type": "string",
+            "description": "技师十进制ID",
+            "minLength": 1,
+            "pattern": "[1-9][0-9]{0,18}"
+          },
+          "version": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "required": [
+          "assigneeId",
+          "version"
+        ]
+      },
+      "AcceptanceDTO": {
+        "type": "object",
+        "properties": {
+          "remark": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 0
+          }
+        }
+      },
+      "OrderItem": {
+        "type": "object",
+        "properties": {
+          "column": {
+            "type": "string"
+          },
+          "asc": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PageTicketView": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TicketView"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            },
+            "writeOnly": true
+          },
+          "optimizeCountSql": {
+            "writeOnly": true
+          },
+          "searchCount": {
+            "writeOnly": true
+          },
+          "optimizeJoinOfCountSql": {
+            "type": "boolean",
+            "writeOnly": true
+          },
+          "maxLimit": {
+            "type": "integer",
+            "format": "int64",
+            "writeOnly": true
+          },
+          "countId": {
+            "type": "string",
+            "writeOnly": true
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          }
+        }
+      },
+      "ResultPageTicketView": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageTicketView"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "TicketView": {
+        "type": "object",
+        "description": "授权维修工作台白名单：ID和金额使用字符串，无用户隐私、凭据或内部异常",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "ticketNo": {
+            "type": "string"
+          },
+          "droneId": {
+            "type": "string"
+          },
+          "droneModel": {
+            "type": "string"
+          },
+          "faultReportId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "version": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "assigneeId": {
+            "type": "string"
+          },
+          "assigneeName": {
+            "type": "string"
+          },
+          "assignedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "acceptedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "description": {
+            "type": "string"
+          },
+          "faultType": {
+            "type": "string"
+          },
+          "actualCost": {
+            "type": "string"
+          },
+          "progressNotes": {
+            "type": "string"
+          }
+        }
+      },
+      "ResultTicketView": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/TicketView"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ResultUserQualification": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/UserQualification"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "UserQualification": {
+        "type": "object",
+        "description": "用户飞行资质实体",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "资质ID"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "用户ID"
+          },
+          "certificateNo": {
+            "type": "string",
+            "description": "证件号码"
+          },
+          "certificateType": {
+            "type": "string",
+            "description": "证件类型"
+          },
+          "certificateImage": {
+            "type": "string",
+            "description": "证件图片URL"
+          },
+          "validStartDate": {
+            "type": "string",
+            "format": "date",
+            "description": "有效期开始日期"
+          },
+          "validEndDate": {
+            "type": "string",
+            "format": "date",
+            "description": "有效期结束日期"
+          },
+          "auditStatus": {
+            "type": "integer",
+            "format": "int32",
+            "description": "审核状态: 0-待审核, 1-审核通过, 2-审核拒绝"
+          },
+          "auditRemark": {
+            "type": "string",
+            "description": "审核备注"
+          },
+          "auditTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "审核时间"
+          },
+          "auditorId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "审核人ID"
+          },
+          "createdTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          },
+          "updatedTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "更新时间"
+          },
+          "deleted": {
+            "type": "integer",
+            "format": "int32",
+            "description": "逻辑删除标志"
+          }
+        }
+      },
+      "IPageOrderVO": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderVO"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          }
+        }
+      },
+      "ResultIPageOrderVO": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/IPageOrderVO"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ResultUserVO": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/UserVO"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "UserVO": {
+        "type": "object",
+        "description": "用户信息",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "用户ID"
+          },
+          "username": {
+            "type": "string",
+            "description": "用户名"
+          },
+          "nickname": {
+            "type": "string",
+            "description": "昵称"
+          },
+          "phone": {
+            "type": "string",
+            "description": "手机号"
+          },
+          "email": {
+            "type": "string",
+            "description": "邮箱"
+          },
+          "avatar": {
+            "type": "string",
+            "description": "头像URL"
+          },
+          "address": {
+            "type": "string",
+            "description": "住址"
+          },
+          "role": {
+            "type": "integer",
+            "format": "int32",
+            "description": "角色: 0-普通用户, 1-管理员"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "description": "状态: 0-禁用, 1-正常"
+          },
+          "creditStatus": {
+            "type": "integer",
+            "format": "int32",
+            "description": "诚信状态: 0-不良, 1-正常"
+          },
+          "verificationStatus": {
+            "type": "integer",
+            "format": "int32",
+            "description": "实名认证状态: 0-未认证, 1-待审核, 2-已认证, 3-未通过"
+          },
+          "realName": {
+            "type": "string",
+            "description": "真实姓名"
+          },
+          "idCard": {
+            "type": "string",
+            "description": "身份证号"
+          },
+          "orderCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "订单数量"
+          },
+          "totalSpent": {
+            "type": "number",
+            "description": "消费金额"
+          },
+          "lastLoginTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "最后登录时间"
+          },
+          "createdTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          }
+        }
+      },
+      "ResultReturnRequest": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ReturnRequest"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "FaultReport": {
+        "type": "object",
+        "description": "故障上报实体",
+        "properties": {
+          "version": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "故障ID"
+          },
+          "reportNo": {
+            "type": "string",
+            "description": "故障单号"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "上报用户ID"
+          },
+          "droneId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "无人机ID"
+          },
+          "orderId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "关联订单ID"
+          },
+          "faultType": {
+            "type": "string",
+            "description": "故障类型"
+          },
+          "faultDescription": {
+            "type": "string",
+            "description": "故障描述"
+          },
+          "faultImages": {
+            "type": "string",
+            "description": "故障图片(JSON数组)"
+          },
+          "faultTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "故障发生时间"
+          },
+          "auditStatus": {
+            "type": "integer",
+            "format": "int32",
+            "description": "审核状态: 0-待审核, 1-确认故障, 2-非故障"
+          },
+          "auditRemark": {
+            "type": "string",
+            "description": "审核备注"
+          },
+          "auditTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "审核时间"
+          },
+          "auditorId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "审核人ID"
+          },
+          "createdTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          },
+          "updatedTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "更新时间"
+          },
+          "deleted": {
+            "type": "integer",
+            "format": "int32",
+            "description": "逻辑删除标志"
+          }
+        }
+      },
+      "ResultFaultReport": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/FaultReport"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "MaintenanceTicket": {
+        "type": "object",
+        "description": "维修工单实体",
+        "properties": {
+          "version": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "assigneeId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "assignedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "工单ID"
+          },
+          "ticketNo": {
+            "type": "string",
+            "description": "工单编号"
+          },
+          "faultReportId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "故障上报ID"
+          },
+          "droneId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "无人机ID"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "关联用户ID"
+          },
+          "maintenanceType": {
+            "type": "string",
+            "description": "维修类型"
+          },
+          "maintenanceDescription": {
+            "type": "string",
+            "description": "维修描述"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "description": "状态: 0-待维修, 1-维修中, 2-已完成, 4-待验收"
+          },
+          "acceptedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "acceptedBy": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "acceptanceRemark": {
+            "type": "string"
+          },
+          "estimatedCost": {
+            "type": "number",
+            "description": "预估费用"
+          },
+          "actualCost": {
+            "type": "number",
+            "description": "实际费用"
+          },
+          "estimatedDays": {
+            "type": "integer",
+            "format": "int32",
+            "description": "预估维修天数"
+          },
+          "actualDays": {
+            "type": "integer",
+            "format": "int32",
+            "description": "实际维修天数"
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "维修开始时间"
+          },
+          "completeTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "维修完成时间"
+          },
+          "progressNotes": {
+            "type": "string",
+            "description": "进度备注(JSON数组)"
+          },
+          "assigneeName": {
+            "type": "string",
+            "description": "维修负责人"
+          },
+          "createdTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          },
+          "updatedTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "更新时间"
+          },
+          "deleted": {
+            "type": "integer",
+            "format": "int32",
+            "description": "逻辑删除标志"
+          }
+        }
+      },
+      "ResultMaintenanceTicket": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/MaintenanceTicket"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "FaultReportVO": {
+        "type": "object",
+        "description": "故障报修视图对象",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "故障ID"
+          },
+          "reportNo": {
+            "type": "string",
+            "description": "故障单号"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "上报用户ID"
+          },
+          "userName": {
+            "type": "string",
+            "description": "用户名"
+          },
+          "droneId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "无人机ID"
+          },
+          "droneModel": {
+            "type": "string",
+            "description": "无人机型号"
+          },
+          "droneBrand": {
+            "type": "string",
+            "description": "无人机品牌"
+          },
+          "orderId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "关联订单ID"
+          },
+          "orderNo": {
+            "type": "string",
+            "description": "订单编号"
+          },
+          "faultType": {
+            "type": "string",
+            "description": "故障类型"
+          },
+          "faultDescription": {
+            "type": "string",
+            "description": "故障描述"
+          },
+          "faultImages": {
+            "type": "string",
+            "description": "故障图片"
+          },
+          "faultTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "故障发生时间"
+          },
+          "auditStatus": {
+            "type": "integer",
+            "format": "int32",
+            "description": "审核状态: 0-待审核, 1-确认故障, 2-非故障"
+          },
+          "auditRemark": {
+            "type": "string",
+            "description": "审核备注"
+          },
+          "auditTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "审核时间"
+          },
+          "createdTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          },
+          "contactPhone": {
+            "type": "string",
+            "description": "联系电话"
+          }
+        }
+      },
+      "ResultListFaultReportVO": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FaultReportVO"
+            }
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "IPageFaultReportVO": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FaultReportVO"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          }
+        }
+      },
+      "ResultIPageFaultReportVO": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/IPageFaultReportVO"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Comment": {
+        "type": "object",
+        "description": "评论实体",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "评论ID"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "用户ID"
+          },
+          "droneId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "无人机ID"
+          },
+          "orderId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "订单ID"
+          },
+          "content": {
+            "type": "string",
+            "description": "评论内容"
+          },
+          "rating": {
+            "type": "integer",
+            "format": "int32",
+            "description": "评分: 1-5星"
+          },
+          "images": {
+            "type": "string",
+            "description": "评论图片(JSON数组)"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "description": "状态: 0-已屏蔽, 1-正常"
+          },
+          "replyContent": {
+            "type": "string",
+            "description": "管理员回复内容"
+          },
+          "replyTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "回复时间"
+          },
+          "createdTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          },
+          "updatedTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "更新时间"
+          },
+          "deleted": {
+            "type": "integer",
+            "format": "int32",
+            "description": "逻辑删除标志"
+          }
+        }
+      },
+      "IPageComment": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Comment"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          }
+        }
+      },
+      "ResultIPageComment": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/IPageComment"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ResultListString": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Drone": {
+        "type": "object",
+        "description": "无人机实体",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "无人机ID"
+          },
+          "model": {
+            "type": "string",
+            "description": "型号名称"
+          },
+          "brand": {
+            "type": "string",
+            "description": "品牌"
+          },
+          "type": {
+            "type": "string",
+            "description": "类型: 航拍/测绘/农业/巡检"
+          },
+          "description": {
+            "type": "string",
+            "description": "描述信息"
+          },
+          "image": {
+            "type": "string",
+            "description": "图片URL"
+          },
+          "pricePerDay": {
+            "type": "number",
+            "description": "每日租赁价格(元)"
+          },
+          "stock": {
+            "type": "integer",
+            "format": "int32",
+            "description": "库存数量"
+          },
+          "flightTime": {
+            "type": "integer",
+            "format": "int32",
+            "description": "续航时间(分钟)"
+          },
+          "maxPayload": {
+            "type": "number",
+            "description": "最大载重(kg)"
+          },
+          "maxSpeed": {
+            "type": "number",
+            "description": "最大速度(km/h)"
+          },
+          "maxRange": {
+            "type": "number",
+            "description": "最大航程(km)"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "description": "状态: 0-缺货, 1-在售, 2-维护中"
+          },
+          "onShelf": {
+            "type": "integer",
+            "format": "int32",
+            "description": "上架状态: 0-下架, 1-上架"
+          },
+          "createdTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          },
+          "updatedTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "更新时间"
+          },
+          "deleted": {
+            "type": "integer",
+            "format": "int32",
+            "description": "逻辑删除标志"
+          }
+        }
+      },
+      "IPageDrone": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Drone"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          }
+        }
+      },
+      "ResultIPageDrone": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/IPageDrone"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ResultDrone": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Drone"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Event": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "aggregateType": {
+            "type": "string"
+          },
+          "resourceId": {
+            "type": "string"
+          },
+          "eventType": {
+            "type": "string"
+          },
+          "fromStatus": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "toStatus": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "actorId": {
+            "type": "string"
+          },
+          "actorName": {
+            "type": "string"
+          },
+          "actorKind": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "previousAssigneeId": {
+            "type": "string"
+          },
+          "assigneeId": {
+            "type": "string"
+          }
+        }
+      },
+      "PageEvent": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Event"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            },
+            "writeOnly": true
+          },
+          "optimizeCountSql": {
+            "writeOnly": true
+          },
+          "searchCount": {
+            "writeOnly": true
+          },
+          "optimizeJoinOfCountSql": {
+            "type": "boolean",
+            "writeOnly": true
+          },
+          "maxLimit": {
+            "type": "integer",
+            "format": "int64",
+            "writeOnly": true
+          },
+          "countId": {
+            "type": "string",
+            "writeOnly": true
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          }
+        }
+      },
+      "ResultPageEvent": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageEvent"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "AirspaceRecord": {
+        "type": "object",
+        "description": "空域备案实体",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "备案ID"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "用户ID"
+          },
+          "regionName": {
+            "type": "string",
+            "description": "飞行区域名称"
+          },
+          "regionAddress": {
+            "type": "string",
+            "description": "飞行区域详细地址"
+          },
+          "longitude": {
+            "type": "number",
+            "description": "经度"
+          },
+          "latitude": {
+            "type": "number",
+            "description": "纬度"
+          },
+          "radius": {
+            "type": "integer",
+            "format": "int32",
+            "description": "飞行半径(米)"
+          },
+          "maxAltitude": {
+            "type": "integer",
+            "format": "int32",
+            "description": "最大飞行高度(米)"
+          },
+          "plannedStartTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "计划开始时间"
+          },
+          "plannedEndTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "计划结束时间"
+          },
+          "purpose": {
+            "type": "string",
+            "description": "飞行用途"
+          },
+          "auditStatus": {
+            "type": "integer",
+            "format": "int32",
+            "description": "审核状态: 0-待审核, 1-审核通过, 2-审核拒绝"
+          },
+          "auditRemark": {
+            "type": "string",
+            "description": "审核备注"
+          },
+          "auditTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "审核时间"
+          },
+          "auditorId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "审核人ID"
+          },
+          "createdTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          },
+          "updatedTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "更新时间"
+          },
+          "deleted": {
+            "type": "integer",
+            "format": "int32",
+            "description": "逻辑删除标志"
+          }
+        }
+      },
+      "ResultListAirspaceRecord": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AirspaceRecord"
+            }
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "CreditRecord": {
+        "type": "object",
+        "description": "诚信记录",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "记录ID"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "用户ID"
+          },
+          "changeType": {
+            "type": "integer",
+            "format": "int32",
+            "description": "变更类型: 1-标记不良, 2-恢复正常, 3-系统扣分, 4-系统加分"
+          },
+          "beforeStatus": {
+            "type": "integer",
+            "format": "int32",
+            "description": "变更前状态: 0-不良, 1-正常"
+          },
+          "afterStatus": {
+            "type": "integer",
+            "format": "int32",
+            "description": "变更后状态: 0-不良, 1-正常"
+          },
+          "reason": {
+            "type": "string",
+            "description": "变更原因"
+          },
+          "orderId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "关联订单ID"
+          },
+          "operatorId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "操作人ID(管理员)"
+          },
+          "operatorName": {
+            "type": "string",
+            "description": "操作人名称"
+          },
+          "createdTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          },
+          "remark": {
+            "type": "string",
+            "description": "备注"
+          }
+        }
+      },
+      "ResultListCreditRecord": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreditRecord"
+            }
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ResultObject": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {},
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "IPageUserQualificationVO": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserQualificationVO"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          }
+        }
+      },
+      "ResultIPageUserQualificationVO": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/IPageUserQualificationVO"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "UserQualificationVO": {
+        "type": "object",
+        "description": "用户飞行资质信息",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "资质ID"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "用户ID"
+          },
+          "username": {
+            "type": "string",
+            "description": "用户名"
+          },
+          "certificateNo": {
+            "type": "string",
+            "description": "证件号码"
+          },
+          "certificateType": {
+            "type": "string",
+            "description": "证件类型"
+          },
+          "certificateImage": {
+            "type": "string",
+            "description": "证件图片URL"
+          },
+          "validStartDate": {
+            "type": "string",
+            "format": "date",
+            "description": "有效期开始日期"
+          },
+          "validEndDate": {
+            "type": "string",
+            "format": "date",
+            "description": "有效期结束日期"
+          },
+          "auditStatus": {
+            "type": "integer",
+            "format": "int32",
+            "description": "审核状态: 0-待审核, 1-审核通过, 2-审核拒绝"
+          },
+          "auditRemark": {
+            "type": "string",
+            "description": "审核备注"
+          },
+          "auditTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "审核时间"
+          },
+          "createdTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          }
+        }
+      },
+      "IPageUserVO": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserVO"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          }
+        }
+      },
+      "ResultIPageUserVO": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/IPageUserVO"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ResultListTechnician": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Technician"
+            }
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PageTask": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Task"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            },
+            "writeOnly": true
+          },
+          "optimizeCountSql": {
+            "writeOnly": true
+          },
+          "searchCount": {
+            "writeOnly": true
+          },
+          "optimizeJoinOfCountSql": {
+            "type": "boolean",
+            "writeOnly": true
+          },
+          "maxLimit": {
+            "type": "integer",
+            "format": "int64",
+            "writeOnly": true
+          },
+          "countId": {
+            "type": "string",
+            "writeOnly": true
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          }
+        }
+      },
+      "ResultPageTask": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageTask"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Task": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "attempts": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maxAttempts": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lastError": {
+            "type": "string"
+          },
+          "result": {
+            "type": "string"
+          },
+          "dueAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "MaintenanceTicketVO": {
+        "type": "object",
+        "description": "维修工单视图对象",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "工单ID"
+          },
+          "ticketNo": {
+            "type": "string",
+            "description": "工单编号"
+          },
+          "faultReportId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "故障上报ID"
+          },
+          "droneId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "无人机ID"
+          },
+          "droneModel": {
+            "type": "string",
+            "description": "无人机型号"
+          },
+          "droneBrand": {
+            "type": "string",
+            "description": "无人机品牌"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "关联用户ID"
+          },
+          "userName": {
+            "type": "string",
+            "description": "用户名"
+          },
+          "maintenanceType": {
+            "type": "string",
+            "description": "维修类型"
+          },
+          "maintenanceDescription": {
+            "type": "string",
+            "description": "维修描述"
+          },
+          "faultType": {
+            "type": "string",
+            "description": "故障类型"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "description": "状态: 0-待维修, 1-维修中, 2-已完成, 4-待验收"
+          },
+          "acceptedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "acceptedBy": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "acceptanceRemark": {
+            "type": "string"
+          },
+          "estimatedCost": {
+            "type": "number",
+            "description": "预估费用"
+          },
+          "actualCost": {
+            "type": "number",
+            "description": "实际费用"
+          },
+          "estimatedDays": {
+            "type": "integer",
+            "format": "int32",
+            "description": "预估维修天数"
+          },
+          "actualDays": {
+            "type": "integer",
+            "format": "int32",
+            "description": "实际维修天数"
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "维修开始时间"
+          },
+          "completeTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "维修完成时间"
+          },
+          "progressNotes": {
+            "type": "string",
+            "description": "进度备注"
+          },
+          "assigneeName": {
+            "type": "string",
+            "description": "维修负责人"
+          },
+          "createdTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          },
+          "updatedTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "更新时间"
+          }
+        }
+      },
+      "ResultMaintenanceTicketVO": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/MaintenanceTicketVO"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "IPageMaintenanceTicketVO": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MaintenanceTicketVO"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          }
+        }
+      },
+      "ResultIPageMaintenanceTicketVO": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/IPageMaintenanceTicketVO"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ResultFaultReportVO": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/FaultReportVO"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ResultMapStringObject": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {}
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ResultListMapStringObject": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {}
+            }
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "CommentVO": {
+        "type": "object",
+        "description": "评论视图对象",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "评论ID"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "用户ID"
+          },
+          "userNickname": {
+            "type": "string",
+            "description": "用户昵称"
+          },
+          "userAvatar": {
+            "type": "string",
+            "description": "用户头像"
+          },
+          "droneId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "无人机ID"
+          },
+          "droneModel": {
+            "type": "string",
+            "description": "无人机型号"
+          },
+          "orderId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "订单ID"
+          },
+          "content": {
+            "type": "string",
+            "description": "评论内容"
+          },
+          "rating": {
+            "type": "integer",
+            "format": "int32",
+            "description": "评分"
+          },
+          "images": {
+            "type": "string",
+            "description": "图片"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "description": "状态"
+          },
+          "reply": {
+            "type": "string",
+            "description": "回复内容"
+          },
+          "replyTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "回复时间"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          }
+        }
+      },
+      "IPageCommentVO": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommentVO"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          }
+        }
+      },
+      "ResultIPageCommentVO": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/IPageCommentVO"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ResultAirspaceRecord": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/AirspaceRecord"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "IPageAirspaceRecord": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AirspaceRecord"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          }
+        }
+      },
+      "ResultIPageAirspaceRecord": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/IPageAirspaceRecord"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

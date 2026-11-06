@@ -1,0 +1,725 @@
+{
+  "url": "https://codeload.github.com/springmeng/Drone-Rental-System/zip/91cf62096c476f15249d7da15bdc1556378778d8",
+  "commit": "91cf62096c476f15249d7da15bdc1556378778d8",
+  "commit_verification": "ZIP git archive comment exact match; not a Git checkout",
+  "archive_bytes": 12201398,
+  "archive_sha256": "d395317b2bc6d1f96952469d063dbfbd610d5c7f1f8829fb69b2893283af462a",
+  "files": [
+    {
+      "path": ".gitee/ISSUE_TEMPLATE.zh-CN.md",
+      "sha256": "8961036397465316d54cbe74f84188c0c434173f7cc2c53c0c5d5622a18e757f"
+    },
+    {
+      "path": ".gitee/PULL_REQUEST_TEMPLATE.zh-CN.md",
+      "sha256": "83edb6c23a421c99f1d9fe7d4cb12d919eda149ce4da4d9c940b9c1f65ad3aa2"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "2ef767385125df7d546a79f251e267fab5c0e68a652128987a6982cb61d53584"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "README.md",
+      "sha256": "39b32668337a413bb509a4b90b2f93468c8c9d1ecc93dae260fca308b56928b4"
+    },
+    {
+      "path": "drone-rental/docs/技术方案.md",
+      "sha256": "72414611c34ea9e1a6b47ced8bc7a976b002cab7d8f4508adedbc77ce1cdcedb"
+    },
+    {
+      "path": "drone-rental/docs/操作手册.md",
+      "sha256": "b0496b817081f34b46026148b8b4aa9399caf48433ed1796cb05e3e73ec72ab4"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/index.html",
+      "sha256": "1524ceb5bab261db8b9a1d9f256d08ae44d53934432c05ad62f843c3b36d398a"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/package-lock.json",
+      "sha256": "5b6d2320132ae29afec3c17a08a135a6fd8363618ae3299387bde81e6aa476fc"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/package.json",
+      "sha256": "db135d14c1f16be2302983dbc61cfc0c7ae0993d467a94ac0f1e299164f5c4cc"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/App.vue",
+      "sha256": "2a3bdfc815c69b914600c186375956ad869e2447450418cb48023ac74234a3d7"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/api/admin.js",
+      "sha256": "16012a88eaf25167b9f213594ed21b6abd126f45c93251075cf01de8873d7073"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/api/auth.js",
+      "sha256": "27275b859bc13292e561321f32ca7d19e4dc1176584a37fd577a59c56116c270"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/api/comment.js",
+      "sha256": "c31fea4051fe73247872db04fa7d4c5c44b14b249b25cb03d7af46eee6c53d73"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/api/drone.js",
+      "sha256": "a182a577ed4f657446e7d63a157d7c70f6cbcce6ca30916350e80977b02be5bf"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/api/index.js",
+      "sha256": "f86b2697ce625e532d51e5b8f84fc6e5fba90c5e7c2c55d1b96760b7f286b3b8"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/api/maintenance.js",
+      "sha256": "9ee67e97850aa6c1ca951bcaf129b681f766330495475f6795b449b527bd54fc"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/api/order.js",
+      "sha256": "30dbe1e0593b3b210bc332baec5c49ea127ef106db7f9b100b7b959421429bd5"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/api/request.js",
+      "sha256": "337235a76d956a5a1b6eba4757cb333ec5ea00c433f0e65659a9bae02c3e3d98"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/api/user.js",
+      "sha256": "7e559df07865021cf8ac11c0fb027601d5aca884ec03b1ffa97efe1ed22eb9c6"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/assets/styles/element.scss",
+      "sha256": "85677bca199f279bf62579c7dacc321e4136f5a79e03895a9e311901b17a6035"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/assets/styles/global.scss",
+      "sha256": "3679e0b4702818dcd876589f3dbbddfd034b15ca2a38a76efc35e43ecbd524b5"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/assets/styles/variables.scss",
+      "sha256": "d4884b2f85c9a4dc197b711d6688d9ded80b9263fa054a00b4b6c35d105dcef8"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/components/business/DroneCard.vue",
+      "sha256": "477a32036b8229cf66aecc35835a7e963ec9623f931fb27ef177d5eb70a48cf5"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/components/common/BentoGrid.vue",
+      "sha256": "8ae6cb6aecbd7974fe57477178a8fac545a3a23e4c823bea82a65f974b58b5ef"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/components/common/EmptyState.vue",
+      "sha256": "20c54684801acaa515a2247a97f65b594fd6ab175c6b31a0499eda4e27ebda05"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/components/common/GlassCard.vue",
+      "sha256": "76889ce6864650087bd99dd66e2b980fbdf95a57e4714292c587236cba16d83d"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/components/common/PageHeader.vue",
+      "sha256": "46a1168b6907a08c7e3690bea2f1114fe2ad501036065bf22f5d62cce729a36c"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/components/common/StatTile.vue",
+      "sha256": "f7b27b9e701bd2cc106d50910a19923c7629ceee92e60658ab4ccfa923ee1675"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/components/common/StatusTag.vue",
+      "sha256": "6dbceb45be0eaaeab66182edc9b2d1e78dca4008528345e41d371689664cc9a3"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/components/common/TimelineProgress.vue",
+      "sha256": "8f036c0920f4b9ac9fdade690d32eb4305337621c78cc16dcf0dca2797ba3699"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/layouts/AdminLayout.vue",
+      "sha256": "2a585972fe41139a7cf81c70a96dcbda83e63e8adb9fcd0a9e96356bcb5ba4ec"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/layouts/UserLayout.vue",
+      "sha256": "592df11383533e1630b8a3f8634fc90839310c7bb4fcce2ef6b9bc0afb8864d4"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/main.js",
+      "sha256": "0063be1793bdf4a96374788941985a56910b5ea4886a7b1f7c5ab6b2ae1103c6"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/router/index.js",
+      "sha256": "b6d7f8018bd88ca5d82782835f004d6723f0ba3d99fd32ad35618c302fb75870"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/stores/app.js",
+      "sha256": "872e804af6d71c6c32ac2e395f37c9bccc4cb3ff5b1754e1c972c726606858f7"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/stores/auth.js",
+      "sha256": "448953d3c1042a4c23556fd9a5e3a7f88f1887834b9226a203e3765223d97891"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/stores/index.js",
+      "sha256": "6bb2592ef57b0e0073de7ee54646ed9498aedfb168fd85df03cf83bda102711c"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/NotFound.vue",
+      "sha256": "197384638bb4cf44a70e0cabebd2f0998e282cbba362e30dfe138394e4efccbd"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/admin/AuditManagement.vue",
+      "sha256": "6ce12b6c4fd8ef22a2c728523db93e5dceafce6d3a9e1d261fe59b4093f1a664"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/admin/CommentManagement.vue",
+      "sha256": "72284c255085733b520d8e0d6bb26b15f0f80195c510e13320fd0b4cb7c8be26"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/admin/Dashboard.vue",
+      "sha256": "6285895a4279f75952e81596ae42cae0960fecb03fd6a80fda697f38837304b7"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/admin/DroneManagement.vue",
+      "sha256": "60c9e7be662b9271426fe24e05b99b6160a915b8b167e8df7e8284a12de9528a"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/admin/FaultAudit.vue",
+      "sha256": "4ddeba25fd1a38f500c218bd288c2b50ba412d42ea945f81479a3ee2e37ca102"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/admin/MaintenanceManagement.vue",
+      "sha256": "3b7df1dcf1c055664b1fa3037fe38992c8215b115c37f6e0095aca1ebdd63b0e"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/admin/OrderManagement.vue",
+      "sha256": "6a06beea4f78a87d8dfe5e1c3146af4795178c090beab010372ccc7479e118c5"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/admin/UserManagement.vue",
+      "sha256": "04d9548caa3843bde5b7a87d618ea04d69e59485b02c557dce26ee0b38e30ee0"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/auth/AdminLogin.vue",
+      "sha256": "183f16b9a18c4cc45d2d085bf34fe5612f28716f46aa20ad30c7780ba252fd5c"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/auth/Login.vue",
+      "sha256": "03d15c724728a201e43eff127205f4e3addc9b1da836dcf16df129b9e8c11c2d"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/auth/Register.vue",
+      "sha256": "99da1d23180515263eca57d51fbaecfab00c6e76293b655d34f7930c719ee7cd"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/user/DroneDetail.vue",
+      "sha256": "13f8ce83ed0c2694d03ecfc561bec067b3afeb28781141c79afe61aae1718d84"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/user/DroneList.vue",
+      "sha256": "8f482b8d250d8723efd5b5be6099abb57f201ab42cf0ce2d06470513a5006101"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/user/FaultReport.vue",
+      "sha256": "887fee9ff395e69278279b8cb75104769a5e7edc0c327ca3c71fddd96c4e0987"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/user/Home.vue",
+      "sha256": "82deea0bb79c33669a7427321c4a7db6112942961a8bf1afc276d5b8c2887c6d"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/user/MyOrders.vue",
+      "sha256": "105c0a39b5f56158ff278295b6cd49316689643b4acf93d89df25c942fcc4816"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/user/OrderDetail.vue",
+      "sha256": "b81ecf92d2b65c103e4147b42d0eae6db93e64dfaa916f9c7b4961f036ebe769"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/user/OrderPay.vue",
+      "sha256": "e8b7daa368dd0f329a7504cba6aca4e2f949db6dc5b3bd6dfde3e8acb6d5a24c"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/src/views/user/Profile.vue",
+      "sha256": "0cb5752bf97eb5ccaa81db99390294f0aa5684ee8e2720f139c64ebd50de4eba"
+    },
+    {
+      "path": "drone-rental/drone-rental-web/vite.config.js",
+      "sha256": "a3db71fdec19c757fe6984ded013e0a3f2a665ff000040b838ee9fee5a739c91"
+    },
+    {
+      "path": "drone-rental/pom.xml",
+      "sha256": "95e5b1ad5307b4e121a623bba975e85c6c97d5ab152d3ec3ae70bbd60c0a4b3d"
+    },
+    {
+      "path": "drone-rental/sql/init.sql",
+      "sha256": "e939d73fa09f7b24c4617253bca727fd2ea5195ce3f7b3f456728201769bec24"
+    },
+    {
+      "path": "drone-rental/sql/update_cert_images.sql",
+      "sha256": "05290a993bda0f59759f1289119508ad43991224cf8fe3935d5c132d810331d2"
+    },
+    {
+      "path": "drone-rental/sql/update_delivery_address.sql",
+      "sha256": "df55701d00fa3c23466f4e76c2835d44815e8e5f4029b6a38b526974c1ee1276"
+    },
+    {
+      "path": "drone-rental/sql/update_drone_images.sql",
+      "sha256": "909c59db46df681852f6f9961a0ab0c9b8894d524c2a8912843dc13132919645"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/DroneRentalApplication.java",
+      "sha256": "771af138f89e3b6d25642305382d5a24c333691a107d34bb37e24a0c07d0f068"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/common/Constants.java",
+      "sha256": "6dbcc54d002152ddf23734b1be642fa4976b3acc6a57d2504dc0e9a14aa6cf57"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/common/Result.java",
+      "sha256": "015bca1e2aa5c6ab8d539596b5f7bb9ff6d9f2b4c16a2dbcbec11e2a696edc7b"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/common/ResultCode.java",
+      "sha256": "d7c11da143f8d9c5d0f30c94eb7400f5be97708d6c90c3740c335b5351a26ab9"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/common/exception/BusinessException.java",
+      "sha256": "a7beda890d28e2845774e5ddf4a2e75a9d9ab9397bdeb5c48efcffdac894c945"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/common/exception/GlobalExceptionHandler.java",
+      "sha256": "18d910486f8d2c0d3ab5fd8bc85f58eb465e2b2853cc62398e4d77487db3aa94"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/config/CorsConfig.java",
+      "sha256": "359f511587b97b79d62c23690b26fe3db15a68a565d65d627370d7ba69a5340a"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/config/MyBatisPlusConfig.java",
+      "sha256": "fbb8773d2856b20f14ad7fde090a6d1ec516fb1e4aa47064afe12569ee8496f6"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/config/SwaggerConfig.java",
+      "sha256": "dcb919938eb35c99728659c64f06bfc3240cafdb70b5fa1379b8645b7ad61dbb"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/config/WebMvcConfig.java",
+      "sha256": "a05a0fe93fde818a8e0c57933becb9df76e1a41a72d0600c2fc6ddaa7d5b29c1"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/controller/AdminAirspaceController.java",
+      "sha256": "a33e0e8e57948d2baaeb77b299058a63df2af9de5c743c70bde3f9313f79fdc6"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/controller/AdminCommentController.java",
+      "sha256": "873c05cc7250d858b4ee0acc56a1d61c6c87e0e5216c662d3e4d5a8207dd5bf5"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/controller/AdminDashboardController.java",
+      "sha256": "7033f8933726addb36e2955b63abe079237bcc6814673c944c32be255b417174"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/controller/AdminDroneController.java",
+      "sha256": "5bbd0d684a6c694fdf02b388a7d4e4dd735bbdfc1249a652b64045eb937ac891"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/controller/AdminMaintenanceController.java",
+      "sha256": "82573724765fb230d65214711d50b3613653e8b130fbc7fc34bc25b61259b6db"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/controller/AdminOrderController.java",
+      "sha256": "b2e6c504f5775bdf9d25eed7323ced24a32d638adbb933620195d71878adae8e"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/controller/AdminUserController.java",
+      "sha256": "50715c499087804e07ae43c6a90956ddfecdef8d9bb5171952d80df2bd9b2682"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/controller/AirspaceController.java",
+      "sha256": "10ef39a4a88fc68f415793bc903bef871ec9c67889583fbaf75484c7e342adf6"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/controller/AuthController.java",
+      "sha256": "8cd70b3267fcb3049544b7417602ce4f4cb3fe92f7895b677393e36ac8e3e77a"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/controller/CommentController.java",
+      "sha256": "2d530faf842408e849fe343ef20d72d8a812ac9c65d0bf900cdd030d88b77f27"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/controller/CommonController.java",
+      "sha256": "ec0f0ccfecf11cdc48a0042f2a87715d7557d9d85117cf83c90641f456822b47"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/controller/DroneController.java",
+      "sha256": "e4012a2af14e55b855422a93a00286eac2b17a31453b8af8ff7f5dd8e4c05d43"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/controller/FaultController.java",
+      "sha256": "c61ea9c21a450b548b2695f23003e8f59d9a64732eb0b6e2f7d92dbb9479fea2"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/controller/OrderController.java",
+      "sha256": "ba958b2c706471a88383490bddb262f54e0ec9702057a5df5dd878859df9bdd2"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/controller/UserController.java",
+      "sha256": "7b0055c1706a6d9cf5e674bce12681c6b14aaf03998942766e0af73659e33778"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/dto/AirspaceRecordDTO.java",
+      "sha256": "bfbada21b1bea7746abd167a0675001001f8735a6dfa18be20c7c40ed7d1dff0"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/dto/AuditDTO.java",
+      "sha256": "0368203bea671ac3e623287095c345693d32f18819a3b11f3e5d652683c00079"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/dto/CommentDTO.java",
+      "sha256": "c8e7e8da3f83500dcf95ecd32e3e5ad2a94a0b03bc7b5ad632f2aaeca066ca95"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/dto/DroneDTO.java",
+      "sha256": "9a10cc5845b9acabf83174bd00a9e3c02116c803565877b35fd3c6c58e9c56e4"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/dto/FaultReportDTO.java",
+      "sha256": "3dbc33fc396a9216a704f8d34d07f5f9ff1a2759ffea5758eef67f5e32b9e450"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/dto/LoginDTO.java",
+      "sha256": "a889a5c77db39a92cbc0cce7182b2c8f972881e53ad1dac0c0fdfa36609200e5"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/dto/MaintenanceTicketDTO.java",
+      "sha256": "078cf5ce195fc866c807e07f35770bed2946a27f1ad3e1bee8cde1464f86bda9"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/dto/OrderCreateDTO.java",
+      "sha256": "2674b9235824e99956d89221f93d3b23305641f17048d5bd7ae6850293fec86f"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/dto/PageDTO.java",
+      "sha256": "13ac9f643f11589bda0eccb091d2d587d3143dda8e72083f7f2e80f49e9001df"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/dto/QualificationDTO.java",
+      "sha256": "9233ea7871278d5f2b560eb7c6872c0c3d470f0224c09899590866e824391c5d"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/dto/RegisterDTO.java",
+      "sha256": "6a0e5756475ad7b4b7339c68907b9c6f7718216d8fb35df2e7c544cf74713445"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/dto/UserUpdateDTO.java",
+      "sha256": "e741d081669f4b30c849023c7b2a159dae9820b43a7641744814bd11ba17a9b9"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/entity/AirspaceRecord.java",
+      "sha256": "a1e8004385a8169e57657d194024172f0815ba84b5721157c42b28bd61feb6a8"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/entity/Comment.java",
+      "sha256": "63eabe1454c941425cb8f8f9bfad888fe0f745a1c7fbf465753cdd7cd13f6cb2"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/entity/CreditRecord.java",
+      "sha256": "b206d6387226a42c2e8f2288fa0451008bc7afc7ea93beacdc64499f7e10864f"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/entity/Drone.java",
+      "sha256": "e9e094d90109049b5314f65038194d21d225c6b9a078439f27b060efb678ba3f"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/entity/DroneStockLog.java",
+      "sha256": "7abaf983d039177bf8eea79c2bc847eaf2e3917c644965e763678d27fb8acdb0"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/entity/FaultReport.java",
+      "sha256": "6f0851b5e6c836d69c1cf91ae1ba4aad9b8a347ab86ee9d7508c3da97de0fdde"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/entity/MaintenanceTicket.java",
+      "sha256": "dd7d0f3d9daa0b959b2b1e6c8783cbd8c0345397b605a0c37b0ceac699693fee"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/entity/Payment.java",
+      "sha256": "eac83b420b8ccee3c3f86d357f399abaf4424a503dd71e3cbd63c4d56148bec1"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/entity/RentalOrder.java",
+      "sha256": "7cefc99e439010066914f52cebc30d3267d1f1b56dc8a9625d94f60b1f6be9c5"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/entity/User.java",
+      "sha256": "244e46c890dd40454ecddeb1d973c473fd828c99a945fcee2974fee1a163dbce"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/entity/UserQualification.java",
+      "sha256": "f13a28efa39e6fdd78969be8b089d8eb0979714210501236d8aa30512733004c"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/mapper/AirspaceRecordMapper.java",
+      "sha256": "20cc36eeefc8c7298a2a76ec9907cf6b3ada244d0be638d43e91b554842f5a7c"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/mapper/CommentMapper.java",
+      "sha256": "3b492646134e7f783b4b2550430e099e44901417e69b1b2b4ba318dcceabfaa2"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/mapper/CreditRecordMapper.java",
+      "sha256": "c5575ca6b4df24c921bc549318f551a0487066d37de5bbe309419a318b560d9f"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/mapper/DroneMapper.java",
+      "sha256": "bf7ad4f82ba37f73f1e8c44db45e7660c3648dd7c2450ce9f1654185769c271c"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/mapper/DroneStockLogMapper.java",
+      "sha256": "57d1cfa83256c69c970f2fbd7aa1837e08376e5cc580e29bfa758932ec7f07b6"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/mapper/FaultReportMapper.java",
+      "sha256": "5d4b3509d4b602eae4f9faa0968f34d8aea7580e84cf6a97598d25921fe87e0e"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/mapper/MaintenanceTicketMapper.java",
+      "sha256": "d7cb6d71a464cc7f07221b8cd34145a62fba5bd885f007f67dd56ea1bd473fa3"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/mapper/PaymentMapper.java",
+      "sha256": "e65771a8bf5eeaee02a269e1f0de2b4fa8541f44d074be5259c92e4d2ad41430"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/mapper/RentalOrderMapper.java",
+      "sha256": "c601d33fbc6879bce570bb385ec7174252ca520665a42afe22559659fd04e1f4"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/mapper/UserMapper.java",
+      "sha256": "ff3a8485ec6777ee05a2b6867485c7726455daeec7ecb4194bfb259d6338f0f3"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/mapper/UserQualificationMapper.java",
+      "sha256": "c8ada4aa57e1a3cb409f7f643d6796670bf9c091ba50caf1d9e011f82955d84e"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/security/AdminInterceptor.java",
+      "sha256": "4b759ad39a454705b8272b49030bd8e450cca59c93562d24218a19ff3acd2716"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/security/JwtInterceptor.java",
+      "sha256": "8f00e790bcc92ad8ceffb82c3be802322c078258b3d45925fdf3833a4551e011"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/security/JwtUtil.java",
+      "sha256": "8516e6413f41d70c26d40caae395f757fa82ef03d8017dd5822b66bd665cdda0"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/security/UserContext.java",
+      "sha256": "fd5b098af9e6546ccd6bfbbeb6b9a700f822ccd7c661e09312245e9b0211893c"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/AirspaceRecordService.java",
+      "sha256": "c547e14ec61472dc73f68029dd945372d216b318d7892eb1ac2f2f421cd39918"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/CommentService.java",
+      "sha256": "d52134fdb59d4ab4565c05c760e21726e0b199fbaecdaeb840511ec4504e294b"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/CreditRecordService.java",
+      "sha256": "8d334552f90071ab0d1036773452ebe0471f746ce493bd99715d9e35142c6cf5"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/DroneService.java",
+      "sha256": "959209642faa2556b4aa34fe56aa90713e14262799ae425ca610219b9978539c"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/FaultReportService.java",
+      "sha256": "b77d96043aef92e8452fe24cbb17c452ba8e42b58cde56ef926de3307dd1e0e9"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/MaintenanceTicketService.java",
+      "sha256": "3a6cf980f1cd46adbaa5c48aec0bbc6b4e8500d1d10d302b71e35323e1a450b3"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/OrderService.java",
+      "sha256": "7c8baf9b909b5269e44c4088c7b511621b2a0129db250a522079c84ee22618e9"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/PaymentService.java",
+      "sha256": "ef88921d9c9a37cdcfb1c75972dde5cf0629fbf9783be1855dd44eebe268ee2a"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/UserQualificationService.java",
+      "sha256": "9ea9cd99082dce5ec3a0585da2a06155f5dfa634ab6f48a18da2564e451a61d3"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/UserService.java",
+      "sha256": "732271501a503b8815fbf13b3113fa93a9c90d971eb284f33eccd1534f061175"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/impl/AirspaceRecordServiceImpl.java",
+      "sha256": "91bae39f723f79095289e66d0036e938fd772128532024a10a7f7c94bf20615c"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/impl/CommentServiceImpl.java",
+      "sha256": "a73816e037a72d27354d3d7f8cfaa137617dd543ddc8ce86865ca176f42c091d"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/impl/CreditRecordServiceImpl.java",
+      "sha256": "49b186ba1fbde5c46696c0bfd0bd4b671b4844112c57db28dcc65f3fae00712b"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/impl/DroneServiceImpl.java",
+      "sha256": "502590d14c4a60315d57387b9cc11eba14815d61d4579736bd58d699f34a6eea"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/impl/FaultReportServiceImpl.java",
+      "sha256": "8909b7975b0a4cdca79823142fb9b1a0b84ce3fd50f55c4903dda907d06a2594"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/impl/MaintenanceTicketServiceImpl.java",
+      "sha256": "c968f147c5177bd1bf7e11dc197284be36f73ed684aceb8cb4c219c0f418a509"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/impl/OrderServiceImpl.java",
+      "sha256": "66857d025233f43c88a160bbb8f34543a3dba72e5caeea95f7c96f61e2cac7a0"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/impl/PaymentServiceImpl.java",
+      "sha256": "45dc60d17862072e47614f00e3c4b8348e3a06ce0ea32dfc1a4a0e1e67e6ad9a"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/impl/UserQualificationServiceImpl.java",
+      "sha256": "8f32ba33466d68eba76592b6dad8c085e6a49b867aada190f1c8e2d0952c90d2"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/service/impl/UserServiceImpl.java",
+      "sha256": "a9f0cdaf36f89fdc349631ef095c0c7d421336323067281f6d9bac5629070f71"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/vo/CommentVO.java",
+      "sha256": "2e2f558d6568339f4e1be82145060a23b138b515a77bb4fbf80939dc8add6144"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/vo/FaultReportVO.java",
+      "sha256": "0a9f9784e2888dbded9f403ed9fe0722b5d2fb8d3b9fc45bc903441a13716ced"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/vo/LoginVO.java",
+      "sha256": "95f19ae52a1a367147d18cab02179a91c77e1302847f589f8ea4a78790b42ac8"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/vo/MaintenanceTicketVO.java",
+      "sha256": "116953b069c70985741a1509bbc7099014510b9fe34962da8e9374ca45b00e4d"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/vo/OrderVO.java",
+      "sha256": "74b2147133f1115362a6e43de6ecd2526a06a73004dca509dd6858f0bb00f5ac"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/vo/UserQualificationVO.java",
+      "sha256": "d4f75181558fdb450fa995359414ffa2b10d1bc7e5def59645f4f344f1072d6c"
+    },
+    {
+      "path": "drone-rental/src/main/java/com/drone/rental/vo/UserVO.java",
+      "sha256": "3d0dfd75ae71c7ee2f7d0072b8f3ed0cd9956c84bc196c151f48806216eb90f2"
+    },
+    {
+      "path": "drone-rental/src/main/resources/application.yml",
+      "sha256": "22e2d7127356d8956966a11225155e136976d8aa955d84d122242984a0eeba20"
+    },
+    {
+      "path": "drone-rental/uploads/5835c005ef21455c927b360cf0f99667.png",
+      "sha256": "71636be47ed7f19e1576326b9824ed8065d7c6d613b225488de5af9d3f0558d5"
+    },
+    {
+      "path": "drone-rental/uploads/69f1d0853ba14181adc578f9211ce0a4.jpg",
+      "sha256": "4fc61291c55f838feab8d788517387e82b4e7c01603d8eadaf2d741f0c5ea746"
+    },
+    {
+      "path": "drone-rental/uploads/agrast40_drone.png",
+      "sha256": "49f86b2fa8e2c56b600cbb16834a1b7c422bc9976b3046bf1216083d1c10a2ee"
+    },
+    {
+      "path": "drone-rental/uploads/air2s_drone.png",
+      "sha256": "152c8233d2f5b1f15211d3fd79428830bf6b5ef7df4cf78de65bd74b00cb933e"
+    },
+    {
+      "path": "drone-rental/uploads/cert_1.png",
+      "sha256": "66a3ce76dbe5c03fc1b26db0a714eb66a45b108b9225b6d6eb1a0ef61e024c89"
+    },
+    {
+      "path": "drone-rental/uploads/cert_2.png",
+      "sha256": "c976776a377b1c5f24d647e5706fd52fa94de52b1b37c6c1307fe406c1bc3329"
+    },
+    {
+      "path": "drone-rental/uploads/cert_3.png",
+      "sha256": "13f31c25e342ba3ceb177a60bcfd2bddd8e1834a191aed776d8da23b1f95dfdb"
+    },
+    {
+      "path": "drone-rental/uploads/efb0873c5fa345b4aea651a425d13252.jpg",
+      "sha256": "ac276904495c9a3b2bacba83b59e92e67be92ef0fab7b5015df880a1100dbaf6"
+    },
+    {
+      "path": "drone-rental/uploads/inspire2_drone.png",
+      "sha256": "b3e667ae82d9a1b93da8fa2d142ff22d5078d55c80419b5bc1915ba6b13498dd"
+    },
+    {
+      "path": "drone-rental/uploads/mavic3_drone.png",
+      "sha256": "2ba1303d0bc3ddaabc3021a40fc96f560651d701ed185adcd7c74a62ef24bce3"
+    },
+    {
+      "path": "drone-rental/uploads/mini3pro_drone.png",
+      "sha256": "809e96fde4f30601f56f12bd5c58d8180e693dfca35aee93fced4d4a66b4d873"
+    },
+    {
+      "path": "drone-rental/uploads/phantom4pro_drone.png",
+      "sha256": "b1b449eefe2d234b8ad3188bb3e7504ead827bcf0731bbabf1c5b9fcde1419a9"
+    },
+    {
+      "path": "drone-rental/必读.txt",
+      "sha256": "0a0d229c94018247b64fd7ac32178786d1e4a4d91ab728d2f5f433df6afa7be9"
+    },
+    {
+      "path": "pictures/.keep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "pictures/11.png",
+      "sha256": "b1fb7e1d9ba74125d9c18b7eb136f34dcd915e99a12b2e0faf24b3a0031b9b1b"
+    },
+    {
+      "path": "pictures/22.png",
+      "sha256": "1e0668efc76749e71c9491c2c07afca048dedf32cf60afef0748b25953e38925"
+    },
+    {
+      "path": "pictures/640.png",
+      "sha256": "a80c7ac4104bb8674c223609d7c2843b205579e7693aca621792afef6ed4be69"
+    },
+    {
+      "path": "pictures/ScreenShot_2026-05-15_154240_376.png",
+      "sha256": "f0daa361f5f91a2e3feabb79f3021e44653f01d1a6180b4253b07bb7fc783729"
+    },
+    {
+      "path": "pictures/ScreenShot_2026-05-22_164831_758.png",
+      "sha256": "7fd581009b3022f59c57cbda3227f2a554bb7f962ded00a7cf40bd42eb065389"
+    },
+    {
+      "path": "pictures/ScreenShot_2026-05-22_164939_435.png",
+      "sha256": "db56e27a23c373908c1193d08ac8018d26dd2dcc8212de09fbc1fb66c973e19e"
+    },
+    {
+      "path": "pictures/ScreenShot_2026-05-22_165206_253.png",
+      "sha256": "295deefbe1a5d362a4be413bb0fef23e821d10d604633f1a5f89902bf7f11c34"
+    },
+    {
+      "path": "pictures/微信图片_2026-05-22_165213_806.png",
+      "sha256": "dee8e57bfe21f803b82fdbf635f37a9ebea0424640297d692bff5cfbfcafd076"
+    },
+    {
+      "path": "pictures/微信图片_2026-05-22_165221_767.png",
+      "sha256": "77bbd035848b19b35e68a5a8e78c965017cbf411e5621567482a3aef39fcfd27"
+    },
+    {
+      "path": "pictures/微信图片_2026-05-22_165228_951.png",
+      "sha256": "dc93ca02fe79b792db6ec79146a71483e5668b24679efd8ad8655085820a48b9"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "target": 10000,
+    "actual_counts": {
+      "user": 10004,
+      "rental_order": 10000,
+      "drone": 1000,
+      "fault_report": 286,
+      "maintenance_ticket": 286,
+      "return_request": 2143,
+      "drone_stock_log": 14285,
+      "command_dedup": 10000,
+      "business_event": 24285,
+      "job_task": 1000
+    },
+    "seconds": 9.185,
+    "fixture_type": "SYNTHETIC_BULK_READ_NOT_SERVICE_PROOF",
+    "stock_balance": true
+  },
+  {
+    "target": 50000,
+    "actual_counts": {
+      "user": 10004,
+      "rental_order": 50000,
+      "drone": 1000,
+      "fault_report": 1429,
+      "maintenance_ticket": 1429,
+      "return_request": 10714,
+      "drone_stock_log": 71429,
+      "command_dedup": 50000,
+      "business_event": 121429,
+      "job_task": 5000
+    },
+    "seconds": 12.3,
+    "fixture_type": "SYNTHETIC_BULK_READ_NOT_SERVICE_PROOF",
+    "stock_balance": true
+  },
+  {
+    "target": 100000,
+    "actual_counts": {
+      "user": 10004,
+      "rental_order": 100000,
+      "drone": 1000,
+      "fault_report": 2857,
+      "maintenance_ticket": 2857,
+      "return_request": 21429,
+      "drone_stock_log": 142857,
+      "command_dedup": 100000,
+      "business_event": 242857,
+      "job_task": 10000
+    },
+    "seconds": 16.266,
+    "fixture_type": "SYNTHETIC_BULK_READ_NOT_SERVICE_PROOF",
+    "stock_balance": true
+  }
+]

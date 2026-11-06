@@ -1,0 +1,13 @@
+<script setup lang="ts">
+import {ref,watch} from 'vue'
+import {api} from '../../api/leaseguard'
+import type {BusinessEvent,Id} from '../../types/leaseguard'
+import {orderLabels,repairLabels,returnLabels} from '../../types/leaseguard'
+const props=defineProps<{kind:'orders'|'tickets';resourceId:Id}>(),events=ref<BusinessEvent[]>([]),page=ref(1),total=ref(0),loading=ref(false),error=ref('')
+const names:Record<string,string>={CREATE_ORDER:'创建订单',ORDER_CREATED:'创建订单',PAY:'模拟结算',SHIP:'交付',RECEIVE:'确认接收',CANCEL:'取消订单',TIMEOUT_CANCEL:'系统超时取消',TIMEOUT_NO_ACTION:'系统核对无需取消',RETURN_REQUESTED:'申请归还',RETURN_APPROVED:'归还验收通过',RETURN_REJECTED:'归还驳回',RETURNED:'已归还',ASSIGN_REPAIR:'管理员派工',START_REPAIR:'技师开始维修',SUBMIT_REPAIR:'技师提交待验收',ACCEPT_REPAIR:'管理员验收维修',TICKET_CREATED:'建立维修工单',FAULT_APPROVED:'确认故障',AUDIT_FAULT:'审核故障',FAULT_REPORTED:'上报故障',ALLOCATE:'库存分配',RELEASE:'库存释放',DEVICE_STATUS:'设备状态'}
+function value(e:BusinessEvent,v:number|null):string {if(v===null)return '无';if(e.aggregateType==='ORDER')return orderLabels[v as keyof typeof orderLabels]??String(v);if(e.aggregateType==='TICKET')return repairLabels[v as keyof typeof repairLabels]??String(v);if(e.aggregateType==='RETURN')return returnLabels[v as keyof typeof returnLabels]??String(v);if(e.aggregateType==='DRONE'&&['ALLOCATE','RELEASE','ADJUST'].includes(e.eventType))return `数量${v}`;if(e.aggregateType==='DRONE')return ['缺货','可租','维护'][v]??String(v);return String(v)}
+async function load(){const id=props.resourceId;loading.value=true;error.value='';try{const r=await api.events(props.kind,id,page.value);if(id===props.resourceId){events.value=r.data.records;total.value=r.data.total}}catch(e){events.value=[];error.value=e instanceof Error?e.message:'审计加载失败'}finally{loading.value=false}}
+watch(()=>props.resourceId,()=>{page.value=1;events.value=[];void load()},{immediate:true})
+</script>
+<template><section aria-label="业务事件" class="timeline" v-loading="loading"><h3>业务事件时间线</h3><el-alert v-if="error" :title="error" type="error" :closable="false"/><el-empty v-if="!loading&&!error&&!events.length" description="暂无事件"/><ol><li v-for="e in events" :key="e.id"><strong>{{names[e.eventType]||e.eventType}}</strong> · {{e.actorKind==='SYSTEM'?'系统':e.actorName}} · {{e.createdAt}}<p>{{value(e,e.fromStatus)}} → {{value(e,e.toStatus)}}<span v-if="e.assigneeId"> · 技师ID {{e.previousAssigneeId||'未分配'}} → {{e.assigneeId}}</span></p></li></ol><el-pagination v-model:current-page="page" :total="total" :page-size="20" layout="prev,pager,next" @current-change="load"/></section></template>
+<style scoped>.timeline{padding:16px;border-top:1px solid #eee}li{padding:10px;border-left:2px solid #409eff;list-style:none;margin:8px}p{margin:6px;color:#526070}</style>

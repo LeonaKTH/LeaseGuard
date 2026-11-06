@@ -1,0 +1,9 @@
+{
+  "uuid": "d567f5f2-d946-11f1-807f-005056c00001",
+  "port": 13308,
+  "brand_new_datadir": true,
+  "original_instance_datadir_reused": false,
+  "root_initialized_with_temporary_password_then_rotated": true,
+  "bind": "127.0.0.1",
+  "schema_count_before": 0
+}

@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "types": [
+      "vite/client"
+    ],
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
+  },
+  "include": [
+    "src/types/**/*.ts",
+    "src/api/leaseguard.ts",
+    "src/stores/auth.ts",
+    "src/views/leaseguard/**/*.vue",
+    "src/api/contracts.ts",
+    "src/api/operationKey.ts",
+    "src/layouts/TechnicianLayout.vue"
+  ]
+}
